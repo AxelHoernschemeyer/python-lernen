@@ -38,6 +38,12 @@ alter = 54
 *   # Multiplikation
 /   # Division
 
+## Weitere Rechenoperatoren
+
+```python
+//  # Ganzzahldivision
+%   # Modulo (Rest einer Division)
+
 ### String (Text)
 
 ```python
