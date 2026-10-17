@@ -1,4 +1,5 @@
 ### Tastenkombinationen
 
-Short-Cut|Beschreibung|
-Shift+^+´|Terminalfenster wird geöffnet|
+|Short-Cut|Beschreibung|
+| :--- | :--- |
+|Shift+^+´|Terminalfenster wird geöffnet|
