@@ -10,3 +10,4 @@ print("Division:", zahl1 / zahl2)  # Division
 
 print("Ganzzahlige Division:", zahl1 // zahl2)  # Ganzzahlige Division 
 print("Modulo:", zahl1 % zahl2)  # Modulo
+
