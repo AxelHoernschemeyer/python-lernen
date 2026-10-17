@@ -34,6 +34,13 @@ alter = "54"
 groesse = 1.82
 ```
 
+### Datentyp prüfen
+
+```python
+name = "Axel"
+
+print(type(name))
+```
 ## Ein- und Ausgaben
 ...
 
