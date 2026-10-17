@@ -2,19 +2,27 @@
 
 ## Variablen
 Zuweisung und Ausgabe mit print()
-In Python ist keine extra Deklaration notwendig. Python erkennt durch Zuweisung zur Variablen um welchen Typ es sich handelt und behandelt die Variable entsprechend.
-Es ist nicht notwendig, bei der Ausgabe der Variablen zusätzliche Leerzeichen zu verwenden.
+In Python ist keine extra Deklaration notwendig. Python bestimmt den Datentyp automatisch anhand des zugewiesenen Wertes.
+Es st nicht notwendig, bei der Ausgabe der Variablen zusätzliche Leerzeichen zu verwenden.
 
 ```python
 name = "Axel"
 alter = 54
 
 print(name, alter)
-print("Mein Name:",name, "Mein Alter:" alter)
+print("Mein Name:", name, "Mein Alter:", alter)
 ````
 
 ## Datentypen
 Aufstellung der unterschiedlichen Datentypen und wie sie verwendet werden.
+## Wichtigste Datentypen
+
+| Datentyp | Beispiel |
+|-----------|-----------|
+| str | "Axel" |
+| int | 54 |
+| float | 1.82 |
+| bool | True |
 
 ### Integer (Ganzzahl)
 
@@ -44,10 +52,12 @@ aktiv = False
 ### Datentyp prüfen
 
 ```python
-name = "Axel"
-
 print(type(name))
+print(type(alter))
+print(type(groesse))
+print(type(verheiratet))
 ```
+
 ## Ein- und Ausgaben
 ...
 
