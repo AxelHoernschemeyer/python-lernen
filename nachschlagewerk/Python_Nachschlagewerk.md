@@ -4,7 +4,7 @@
 Zuweisung und Ausgabe mit print()
 In Python ist keine extra Deklaration notwendig. Python erkennt durch Zuweisung zur Variablen um welchen Typ es sich handelt und behandelt die Variable entsprechend.
 Es ist nicht notwendig, bei der Ausgabe der Variablen zusätzliche Leerzeichen zu verwenden.
-  
+
 ```python
 name = "Axel"
 alter = 54
@@ -14,7 +14,19 @@ print("Mein Name:",name, "Mein Alter:" alter)
 ````
 
 ## Datentypen
-...
+Aufstellung der unterschiedlichen Datentypen und wie sie verwendet werden.
+
+### Integer (Ganzzahl)
+
+```python
+alter = 54
+````
+
+### String (Text)
+
+```python
+alter = "54"
+````
 
 ## Ein- und Ausgaben
 ...
