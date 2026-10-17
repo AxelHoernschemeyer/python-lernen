@@ -30,6 +30,14 @@ Aufstellung der unterschiedlichen Datentypen und wie sie verwendet werden.
 alter = 54
 ````
 
+## Rechenoperatoren
+
+```python
++   # Addition
+-   # Subtraktion
+*   # Multiplikation
+/   # Division
+
 ### String (Text)
 
 ```python
