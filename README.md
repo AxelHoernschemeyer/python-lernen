@@ -2,29 +2,44 @@
 
 🐍 Mein persönliches Lern-Repository für Python.
 
-Dieses Repository dient zur Dokumentation und Sicherung meines Lernfortschritts in Python. Es enthält Übungen, Nachschlagewerke, Lernnotizen und Praxisprojekte. Der Schwerpunkt liegt auf Datenverarbeitung, Dateizugriffen, PDF-Auswertungen, Fehlerbehandlung sowie der späteren Anbindung von Oracle-Datenbanken.
+Dieses Repository dient zur Dokumentation und Sicherung meines Lernfortschritts in Python. Es enthält Übungen, Nachschlagewerke, Lernnotizen und Praxisprojekte.
+
+Der Schwerpunkt liegt auf:
+
+- Python-Grundlagen
+- Datenverarbeitung
+- Dateizugriffen
+- Fehlerbehandlung
+- PDF-Auswertungen
+- Oracle-Anbindungen
+- Automatisierten Importprozessen
 
 Ziel ist der systematische Aufbau von Python-Kenntnissen – von den Grundlagen bis hin zu produktiven Anwendungen wie dem automatisierten Import und der Verarbeitung von Rechnungsdaten.
 
-📂 Projektstruktur
+---
 
-/lektionen
-    Python-Lernlektionen
+## 📂 Projektstruktur
 
-/uebungen
-    Praktische Übungen und Lösungen
-
-/nachschlagewerk
-    Persönliches Python-Referenzhandbuch
-
-/lernjournal
-    Dokumentation des Lernfortschritts
-
-/projekte
-    Praxisprojekte
-
-/pdf_import
-    Übungen zur PDF-Verarbeitung
-
-/oracle
-    Oracle-Anbindung mit Python
+```text
+python-lernen
+│
+├── README.md
+│
+├── lernjournal
+│   └── LERNJOURNAL.md
+│
+├── nachschlagewerk
+│   └── PYTHON_NACHSCHLAGEWERK.md
+│
+├── lektionen
+│   ├── lektion01_variablen
+│   ├── lektion02_bedingungen
+│   ├── lektion03_schleifen
+│   ├── lektion04_dateien
+│   └── ...
+│
+├── uebungen
+│
+└── projekte
+    ├── pdf_import
+    └── oracle
