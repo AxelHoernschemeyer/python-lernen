@@ -28,6 +28,12 @@ alter = 54
 alter = "54"
 ````
 
+### Float (Gleitkommazahl)
+
+```python
+groesse = 1.82
+```
+
 ## Ein- und Ausgaben
 ...
 
