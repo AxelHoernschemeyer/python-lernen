@@ -2,11 +2,11 @@
 
 > Repository: `python-lernen`
 >
-> Hauptziel:
+> 🎯 Hauptziel:
 >
 > Python von Grund auf lernen und sicher anwenden können.
 >
-> Langfristige Schwerpunkte:
+> 🚀 Langfristige Schwerpunkte:
 >
 > - Python-Grundlagen
 > - Datentypen und Datenstrukturen
@@ -20,7 +20,7 @@
 > - PDF-Auswertung
 > - Datenbankanbindungen
 >
-> Praxisprojekte:
+> 🛠️ Praxisprojekte:
 >
 > - PDF-Rechnungen auswerten
 > - Daten validieren
@@ -34,7 +34,7 @@
 
 ## ✅ Lektion 01 – Variablen und Ausgaben
 
-### Gelernt
+### 📚 Gelernt
 
 - Variablen anlegen
 - Werte zuweisen
@@ -42,32 +42,20 @@
 - `print()` verwenden
 - Variablen in Ausgaben verwenden
 
-### Übungen
+### 💻 Übungen
 
-```python
-vorname = "Axel"
-nachname = "Hörnschemeyer"
-alter = 54
-wohnort = "Belm-Vehrte"
+- Persönliche Daten in Variablen gespeichert
+- Eigene Ausgaben mit `print()` erstellt
 
-print(
-    "Hallo Python, mein Name ist",
-    vorname,
-    nachname,
-    "und ich bin",
-    alter,
-    "Jahre alt. Ich wohne in",
-    wohnort
-)
-```
+### 💡 Erkenntnisse
 
-### Erkenntnisse
+✅ Variablen müssen nicht deklariert werden.
 
-- Variablen müssen nicht deklariert werden.
-- Python erkennt den Datentyp automatisch.
-- Mehrere Werte können mit `print()` ausgegeben werden.
+✅ Python erkennt den Datentyp automatisch.
 
-### Status
+✅ Mehrere Werte können mit `print()` ausgegeben werden.
+
+### 🎯 Status
 
 ✅ Verstanden
 
@@ -75,7 +63,7 @@ print(
 
 ## ✅ Lektion 02 – Datentypen
 
-### Gelernt
+### 📚 Gelernt
 
 | Datentyp | Beschreibung | Beispiel |
 |-----------|-----------|-----------|
@@ -84,70 +72,27 @@ print(
 | `float` | Kommazahl | `1.82` |
 | `bool` | Wahr/Falsch | `True` |
 
-### Übungen
+### 💻 Übungen
 
-```python
-vorname = "Axel"
-alter = 54
-groesse = 1.82
-verheiratet = True
+- Datentypen angelegt
+- Datentypen mit `type()` geprüft
 
-print(type(vorname))
-print(type(alter))
-print(type(groesse))
-print(type(verheiratet))
+### 💡 Erkenntnisse
+
+✅ Python unterscheidet zwischen Text und Zahlen.
+
+✅ Der gleiche Inhalt kann unterschiedliche Datentypen besitzen.
+
+Beispiele:
+
+```text
+54   → int
+"54" → str
+1.82 → float
+True → bool
 ```
 
-### Erkenntnisse
-
-```python
-54
-```
-
-ist ein Integer:
-
-```python
-int
-```
-
----
-
-```python
-"54"
-```
-
-ist ein String:
-
-```python
-str
-```
-
----
-
-```python
-1.82
-```
-
-ist ein Float:
-
-```python
-float
-```
-
----
-
-```python
-True
-False
-```
-
-sind Boolean-Werte:
-
-```python
-bool
-```
-
-### Status
+### 🎯 Status
 
 ✅ Verstanden
 
@@ -155,73 +100,45 @@ bool
 
 ## ✅ Lektion 03 – Rechnen mit Zahlen
 
-### Gelernt
+### 📚 Gelernt
 
-```python
-+   # Addition
--   # Subtraktion
-*   # Multiplikation
-/   # Division
-//  # Ganzzahldivision
-%   # Modulo
+- Addition (`+`)
+- Subtraktion (`-`)
+- Multiplikation (`*`)
+- Division (`/`)
+- Ganzzahldivision (`//`)
+- Modulo (`%`)
+
+### 💻 Übungen
+
+- Rechnen mit Variablen
+- Ganzzahldivision
+- Modulo
+
+### 💡 Erkenntnisse
+
+✅ Modulo liefert den Rest einer Division.
+
+Beispiel:
+
+```text
+20 % 3 = 2
 ```
 
-### Übungen
+✅ Ganzzahldivision entfernt Nachkommastellen.
 
-```python
-zahl1 = 20
-zahl2 = 5
+Beispiel:
 
-print("Addition:", zahl1 + zahl2)
-print("Subtraktion:", zahl1 - zahl2)
-print("Multiplikation:", zahl1 * zahl2)
-print("Division:", zahl1 / zahl2)
+```text
+20 // 3 = 6
 ```
 
----
+✅ Strings können mit einer Zahl multipliziert werden.
+
+Beispiel:
 
 ```python
-zahl1 = 20
-zahl2 = 6
-
-print("Ganzzahldivision:", zahl1 // zahl2)
-print("Modulo:", zahl1 % zahl2)
-```
-
-### Erkenntnisse
-
-```python
-20 // 3
-```
-
-Ergebnis:
-
-```python
-6
-```
-
-Die Nachkommastellen werden entfernt.
-
----
-
-```python
-20 % 3
-```
-
-Ergebnis:
-
-```python
-2
-```
-
-Modulo liefert den Rest einer Division.
-
----
-
-Interessante Beobachtung:
-
-```python
-print("Axel" * 5)
+"Axel" * 5
 ```
 
 Ergebnis:
@@ -230,23 +147,178 @@ Ergebnis:
 AxelAxelAxelAxelAxel
 ```
 
-Strings können mit einer Ganzzahl multipliziert werden.
+✅ Eine Addition von String und Integer führt zu einem Fehler.
 
----
+Beispiel:
 
 ```python
-print("5" * 3)
+"5" + 1
 ```
 
 Ergebnis:
 
 ```text
-555
+TypeError
 ```
 
-Auch Zahlen in Anführungszeichen gelten als Text (`str`) und werden wiederholt.
+### 🎯 Status
 
-### Status
+✅ Verstanden
+
+---
+
+## ✅ Lektion 04 – Benutzereingaben
+
+### 📚 Gelernt
+
+- Benutzereingaben mit `input()`
+- Ausgaben von Benutzereingaben
+- Einfache Interaktion mit dem Benutzer
+
+### 💻 Übungen
+
+- Vorname abfragen
+- Alter abfragen
+- Wohnort abfragen
+
+### 💡 Erkenntnisse
+
+✅ `input()` liefert immer einen String (`str`) zurück.
+
+Folgende Eingaben liefern alle einen String:
+
+```text
+54
+54.3
+Axel
+```
+
+✅ Auch Zahlen bleiben zunächst Text.
+
+### 🎯 Status
+
+✅ Verstanden
+
+---
+
+## ✅ Lektion 05 – Datentypen umwandeln
+
+### 📚 Gelernt
+
+- Umwandlung mit `int()`
+- Umwandlung mit `float()`
+- Unterschied zwischen `int()` und `round()`
+
+### 💻 Übungen
+
+- Benutzereingaben in Zahlen umwandeln
+- Zahlen addieren
+
+### 💡 Erkenntnisse
+
+✅ `int()` wandelt einen String in eine Ganzzahl um.
+
+✅ `float()` wandelt einen String in eine Kommazahl um.
+
+✅ `int()` schneidet Nachkommastellen ab.
+
+✅ `round()` rundet eine Zahl.
+
+Beispiele:
+
+```python
+int(54.9)
+```
+
+Ergebnis:
+
+```text
+54
+```
+
+```python
+round(54.9)
+```
+
+Ergebnis:
+
+```text
+55
+```
+
+✅ Nicht jeder String kann in einen Integer umgewandelt werden.
+
+Beispiel:
+
+```python
+int("Axel")
+```
+
+Ergebnis:
+
+```text
+ValueError
+```
+
+### 🎯 Status
+
+✅ Verstanden
+
+---
+
+## ✅ Lektion 06 – Bedingungen mit if
+
+### 📚 Gelernt
+
+- Vergleichsoperatoren
+- `if`
+- `else`
+
+### 💻 Übungen
+
+- Volljährigkeit prüfen
+- Minderjährigkeit prüfen
+
+### 💡 Erkenntnisse
+
+✅ Bedingungen liefern entweder `True` oder `False`.
+
+✅ Mit `if` werden Entscheidungen getroffen.
+
+✅ Mit `else` wird die Alternative ausgeführt.
+
+Verwendete Vergleichsoperatoren:
+
+```python
+<    kleiner als
+<=   kleiner oder gleich
+>    größer als
+>=   größer oder gleich
+==   gleich
+!=   ungleich
+```
+
+Beispiel:
+
+```python
+alter = 18
+```
+
+führt bei
+
+```python
+if alter < 18:
+```
+
+zu:
+
+```text
+False
+```
+
+und damit zur Ausführung von `else`.
+
+### 🎯 Status
 
 ✅ Verstanden
 
@@ -256,23 +328,41 @@ Auch Zahlen in Anführungszeichen gelten als Text (`str`) und werden wiederholt.
 
 Bisher sicher verstanden:
 
-- Variablen
-- Ausgaben mit `print()`
-- Datentypen
-- Datentypen prüfen mit `type()`
-- Grundlegende Rechenoperatoren
-- Ganzzahldivision
-- Modulo
+✅ Variablen
+
+✅ Ausgaben mit `print()`
+
+✅ Datentypen
+
+✅ Datentypen prüfen mit `type()`
+
+✅ Rechenoperatoren
+
+✅ Ganzzahldivision
+
+✅ Modulo
+
+✅ Benutzereingaben
+
+✅ Datentypen umwandeln
+
+✅ Bedingungen mit `if`
+
+✅ Bedingungen mit `else`
 
 ---
 
 # 🎯 Nächste Lektionen
 
-- Benutzereingaben mit `input()`
-- Umwandlung von Datentypen (`int()`, `str()`, `float()`)
-- Bedingungen mit `if`
-- Vergleiche (`==`, `!=`, `<`, `>`)
-- Erste kleine Programme
+🔜 `elif`
+
+🔜 Verschachtelte Bedingungen
+
+🔜 Logische Operatoren (`and`, `or`, `not`)
+
+🔜 Erste kleine Programme
+
+🔜 Erste Zwischenprüfung
 
 ---
 
@@ -280,6 +370,22 @@ Bisher sicher verstanden:
 
 Die Grundlagen von Python sind gelegt.
 
-Der Umgang mit Variablen, Datentypen und Rechenoperatoren ist verstanden. Die nächsten Schritte sind Benutzereingaben und erste Entscheidungen mit `if`-Abfragen.
+Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben und einfachen Bedingungen ist verstanden.
 
-Stand: Lektion 01 bis 03 abgeschlossen ✅
+Die nächsten Schritte konzentrieren sich auf Entscheidungslogik und den Aufbau kleiner eigenständiger Programme.
+
+---
+
+📍 Aktueller Stand:
+
+✅ Lektion 01 abgeschlossen
+
+✅ Lektion 02 abgeschlossen
+
+✅ Lektion 03 abgeschlossen
+
+✅ Lektion 04 abgeschlossen
+
+✅ Lektion 05 abgeschlossen
+
+✅ Lektion 06 abgeschlossen
