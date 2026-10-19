@@ -298,25 +298,165 @@ Verwendete Vergleichsoperatoren:
 !=   ungleich
 ```
 
+✅ Der Unterschied zwischen `=` und `==` wurde verstanden.
+
+```python
+=
+```
+
+weist einer Variablen einen Wert zu.
+
+```python
+==
+```
+
+vergleicht zwei Werte miteinander.
+
+### 🎯 Status
+
+✅ Verstanden
+
+---
+
+## ✅ Lektion 07 – Bedingungen mit elif
+
+### 📚 Gelernt
+
+- `elif`
+- Mehrere Bedingungen prüfen
+- Logische Operatoren `and` und `or`
+
+### 💻 Übungen
+
+- Schulnoten auswerten
+- Altersgruppen bestimmen
+- Mehrere Bedingungen in einer Abfrage verarbeiten
+
+### 💡 Erkenntnisse
+
+✅ Mit `elif` können mehrere Bedingungen nacheinander geprüft werden.
+
+✅ Python arbeitet bei `if / elif / else` von oben nach unten.
+
+✅ Nur der erste zutreffende Zweig wird ausgeführt.
+
+✅ `and` bedeutet, dass beide Bedingungen wahr sein müssen.
+
 Beispiel:
 
 ```python
-alter = 18
+alter >= 18 and alter <= 66
 ```
 
-führt bei
+✅ `or` bedeutet, dass mindestens eine Bedingung wahr sein muss.
+
+Beispiel:
 
 ```python
-if alter < 18:
+alter < 18 or alter > 67
 ```
 
-zu:
+### 🎯 Status
 
-```text
-False
+✅ Verstanden
+
+---
+
+## 📝 Zwischenprüfung 01
+
+### 📚 Themen
+
+- Variablen
+- Datentypen
+- Rechenoperatoren
+- Benutzereingaben
+- Datentypumwandlung
+- Bedingungen
+- Vergleichsoperatoren
+- `and`
+- `or`
+
+### 🏆 Ergebnis
+
+**9 von 10 Punkten**
+
+### 💡 Erkenntnisse
+
+✅ Datentypen sicher verstanden
+
+✅ Rechenoperatoren sicher verstanden
+
+✅ Bedingungen sicher verstanden
+
+✅ Unterschied zwischen `=` und `==` verstanden
+
+⚠️ Aufgabenstellungen vollständig lesen
+
+### 🎯 Status
+
+✅ Bestanden
+
+---
+
+## ✅ Lektion 08 – Schleifen mit while
+
+### 📚 Gelernt
+
+- `while`
+- Zählvariablen
+- Endlosschleifen
+- Schleifen mit Bedingungen kombinieren
+
+### 💻 Übungen
+
+- Zahlen von 1 bis 5 ausgeben
+- Rückwärts zählen
+- Quadratzahlen berechnen
+- Gerade und ungerade Zahlen erkennen
+- Benutzereingaben mit Schleifen kombinieren
+
+### 💡 Erkenntnisse
+
+✅ Eine `while`-Schleife wird ausgeführt, solange die Bedingung `True` ist.
+
+Beispiel:
+
+```python
+zahl = 1
+
+while zahl <= 5:
+    print(zahl)
+    zahl += 1
 ```
 
-und damit zur Ausführung von `else`.
+✅ Der Schleifenzähler muss verändert werden.
+
+Andernfalls entsteht eine Endlosschleife.
+
+✅ Schleifen können mit Bedingungen kombiniert werden.
+
+Beispiel:
+
+```python
+if zahl % 2 == 0:
+    print(zahl)
+```
+
+✅ Benutzereingaben können als Obergrenze einer Schleife verwendet werden.
+
+Beispiel:
+
+```python
+zahl = int(input("Bitte Zahl eingeben: "))
+```
+
+✅ `+= 1` erhöht eine Variable um 1.
+
+Beispiel:
+
+```python
+zahl += 1
+```
 
 ### 🎯 Status
 
@@ -350,19 +490,29 @@ Bisher sicher verstanden:
 
 ✅ Bedingungen mit `else`
 
+✅ Bedingungen mit `elif`
+
+✅ Logische Operatoren (`and`, `or`)
+
+✅ while-Schleifen
+
+✅ Endlosschleifen erkennen
+
+✅ Schleifen mit Bedingungen kombinieren
+
 ---
 
 # 🎯 Nächste Lektionen
 
-🔜 `elif`
+🔜 for-Schleifen
 
-🔜 Verschachtelte Bedingungen
+🔜 range()
 
-🔜 Logische Operatoren (`and`, `or`, `not`)
+🔜 Verschachtelte Schleifen
 
-🔜 Erste kleine Programme
+🔜 Listen
 
-🔜 Erste Zwischenprüfung
+🔜 Erste kleine Projekte
 
 ---
 
@@ -370,13 +520,13 @@ Bisher sicher verstanden:
 
 Die Grundlagen von Python sind gelegt.
 
-Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben und einfachen Bedingungen ist verstanden.
+Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen und ersten Schleifen ist verstanden.
 
-Die nächsten Schritte konzentrieren sich auf Entscheidungslogik und den Aufbau kleiner eigenständiger Programme.
+Die nächsten Schritte konzentrieren sich auf Schleifenvarianten, Datenstrukturen und den Aufbau größerer Programme.
 
 ---
 
-📍 Aktueller Stand:
+# 📍 Aktueller Stand
 
 ✅ Lektion 01 abgeschlossen
 
@@ -389,3 +539,9 @@ Die nächsten Schritte konzentrieren sich auf Entscheidungslogik und den Aufbau 
 ✅ Lektion 05 abgeschlossen
 
 ✅ Lektion 06 abgeschlossen
+
+✅ Lektion 07 abgeschlossen
+
+✅ Zwischenprüfung 01 bestanden
+
+✅ Lektion 08 abgeschlossen

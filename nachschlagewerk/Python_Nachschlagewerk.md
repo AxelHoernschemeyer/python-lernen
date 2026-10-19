@@ -100,6 +100,7 @@ print(type(verheiratet))
 ```python
 //  # Ganzzahldivision
 %   # Modulo (Rest)
+**  # Potenz
 ```
 
 ### Beispiele
@@ -114,10 +115,19 @@ print(type(verheiratet))
 # Ergebnis: 2
 ```
 
-💡 Merksatz:
+```python
+5 ** 2
+# Ergebnis: 25
+```
+
+💡 Merksätze:
 
 ```text
 Modulo liefert den Rest einer Division.
+```
+
+```text
+** berechnet eine Potenz.
 ```
 
 ---
@@ -323,36 +333,224 @@ else:
     print("Du bist volljährig.")
 ```
 
-💡 Merksätze:
+---
 
-```text
-if   = wenn
-
-else = ansonsten
-```
-
-Beispiel:
+## if / elif / else
 
 ```python
-alter = 18
-
-if alter < 18:
-    print("minderjährig")
+if note == 1:
+    print("Sehr gut")
+elif note == 2:
+    print("Gut")
+elif note == 3:
+    print("Befriedigend")
 else:
-    print("volljährig")
+    print("Unbekannte Note")
 ```
 
-Ausgabe:
+💡 Merksatz:
 
 ```text
-volljährig
+if    = wenn
+
+elif  = sonst wenn
+
+else  = ansonsten
+```
+
+💡 Wichtig:
+
+```text
+Bei if / elif / else wird nur
+der erste zutreffende Zweig ausgeführt.
+```
+
+---
+
+## Logische Operatoren
+
+### and
+
+```python
+if alter >= 18 and alter <= 66:
+    print("Erwachsene Person")
+```
+
+💡 Bedeutung:
+
+```text
+Beide Bedingungen müssen wahr sein.
+```
+
+---
+
+### or
+
+```python
+if alter < 18 or alter > 67:
+    print("Sondergruppe")
+```
+
+💡 Bedeutung:
+
+```text
+Mindestens eine Bedingung muss wahr sein.
+```
+
+---
+
+### Wahrheitswerte
+
+```text
+False and False = False
+True  and False = False
+False and True  = False
+True  and True  = True
+```
+
+```text
+False or False = False
+True  or False = True
+False or True  = True
+True  or True  = True
 ```
 
 ---
 
 # 🔁 Schleifen
 
-Folgt später.
+## while
+
+```python
+zahl = 1
+
+while zahl <= 5:
+    print(zahl)
+    zahl += 1
+```
+
+Ausgabe:
+
+```text
+1
+2
+3
+4
+5
+```
+
+---
+
+## Rückwärts zählen
+
+```python
+zahl = 5
+
+while zahl >= 1:
+    print(zahl)
+    zahl -= 1
+```
+
+Ausgabe:
+
+```text
+5
+4
+3
+2
+1
+```
+
+---
+
+## Schleife mit Bedingung
+
+```python
+zahl = 1
+
+while zahl <= 10:
+    if zahl % 2 == 0:
+        print(zahl)
+
+    zahl += 1
+```
+
+Ausgabe:
+
+```text
+2
+4
+6
+8
+10
+```
+
+---
+
+## Schleife mit Benutzereingabe
+
+```python
+zahl = int(input("Bitte Zahl eingeben: "))
+
+zaehler = 1
+
+while zaehler <= zahl:
+    print(zaehler)
+    zaehler += 1
+```
+
+---
+
+## Kurzschreibweisen
+
+```python
+zahl += 1
+```
+
+entspricht:
+
+```python
+zahl = zahl + 1
+```
+
+---
+
+```python
+zahl -= 1
+```
+
+entspricht:
+
+```python
+zahl = zahl - 1
+```
+
+---
+
+## ⚠️ Endlosschleifen
+
+Fehler:
+
+```python
+zahl = 1
+
+while zahl <= 5:
+    print(zahl)
+```
+
+💡 Problem:
+
+```text
+zahl wird nie verändert.
+Die Bedingung bleibt immer True.
+```
+
+💡 Merksatz:
+
+```text
+Eine while-Schleife benötigt eine Bedingung,
+die irgendwann False wird.
+```
 
 ---
 
@@ -414,6 +612,20 @@ python3 dateiname.py
 
 ✅ Benutzereingaben
 
-✅ Bedingungen mit `if` und `else`
+✅ Bedingungen mit `if`
 
-🔜 Als Nächstes: `elif`
+✅ Bedingungen mit `else`
+
+✅ Bedingungen mit `elif`
+
+✅ Logische Operatoren (`and`, `or`)
+
+✅ while-Schleifen
+
+✅ Endlosschleifen
+
+✅ Schleifen mit Bedingungen
+
+✅ Schleifen mit Benutzereingaben
+
+🔜 Als Nächstes: `for`-Schleifen
