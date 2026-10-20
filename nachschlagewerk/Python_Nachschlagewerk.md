@@ -439,6 +439,12 @@ Ausgabe:
 5
 ```
 
+## for
+## range()
+## range() mit Schrittweite
+## Rückwärts zählen mit for
+## Vergleich: while und for
+
 ---
 
 ## Rückwärts zählen
@@ -628,4 +634,12 @@ python3 dateiname.py
 
 ✅ Schleifen mit Benutzereingaben
 
-🔜 Als Nächstes: `for`-Schleifen
+✅ for-Schleifen
+
+✅ range()
+
+✅ Schrittweiten
+
+✅ Rückwärts zählen mit for
+
+🔜 Als Nächstes: Listen
