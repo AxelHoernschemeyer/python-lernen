@@ -419,43 +419,108 @@ alter < 18 or alter > 67
 
 ✅ Eine `while`-Schleife wird ausgeführt, solange die Bedingung `True` ist.
 
-Beispiel:
-
-```python
-zahl = 1
-
-while zahl <= 5:
-    print(zahl)
-    zahl += 1
-```
-
 ✅ Der Schleifenzähler muss verändert werden.
-
-Andernfalls entsteht eine Endlosschleife.
 
 ✅ Schleifen können mit Bedingungen kombiniert werden.
 
-Beispiel:
-
-```python
-if zahl % 2 == 0:
-    print(zahl)
-```
-
 ✅ Benutzereingaben können als Obergrenze einer Schleife verwendet werden.
-
-Beispiel:
-
-```python
-zahl = int(input("Bitte Zahl eingeben: "))
-```
 
 ✅ `+= 1` erhöht eine Variable um 1.
 
+### 🎯 Status
+
+✅ Verstanden
+
+---
+
+## ✅ Lektion 09 – for-Schleifen
+
+### 📚 Gelernt
+
+- `for`
+- `range()`
+- Schrittweiten
+- Rückwärts zählen mit negativer Schrittweite
+
+### 💻 Übungen
+
+- Zahlen von 1 bis 10 ausgeben
+- Gerade Zahlen mit Schrittweite 2 ausgeben
+- Rückwärts von 10 bis 1 zählen
+
+### 💡 Erkenntnisse
+
+✅ Die `for`-Schleife eignet sich besonders, wenn die Anzahl der Wiederholungen bekannt ist.
+
+✅ `range(start, ende)` erzeugt einen Zahlenbereich.
+
 Beispiel:
 
 ```python
-zahl += 1
+for zahl in range(1, 11):
+    print(zahl)
+```
+
+✅ Das Ende wird bei `range()` nicht mit ausgegeben.
+
+Beispiel:
+
+```python
+range(1, 6)
+```
+
+ergibt:
+
+```text
+1
+2
+3
+4
+5
+```
+
+✅ Mit einer Schrittweite können Zahlen übersprungen werden.
+
+Beispiel:
+
+```python
+for zahl in range(0, 11, 2):
+    print(zahl)
+```
+
+Ergebnis:
+
+```text
+0
+2
+4
+6
+8
+10
+```
+
+✅ Mit einer negativen Schrittweite kann rückwärts gezählt werden.
+
+Beispiel:
+
+```python
+for zahl in range(10, 0, -1):
+    print(zahl)
+```
+
+Ergebnis:
+
+```text
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
 ```
 
 ### 🎯 Status
@@ -500,19 +565,27 @@ Bisher sicher verstanden:
 
 ✅ Schleifen mit Bedingungen kombinieren
 
+✅ for-Schleifen
+
+✅ range()
+
+✅ Schrittweiten
+
+✅ Rückwärts zählen mit range()
+
 ---
 
 # 🎯 Nächste Lektionen
 
-🔜 for-Schleifen
+🔜 Listen
 
-🔜 range()
+🔜 Schleifen mit Listen
 
 🔜 Verschachtelte Schleifen
 
-🔜 Listen
-
 🔜 Erste kleine Projekte
+
+🔜 Zwischenprüfung 02
 
 ---
 
@@ -520,9 +593,9 @@ Bisher sicher verstanden:
 
 Die Grundlagen von Python sind gelegt.
 
-Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen und ersten Schleifen ist verstanden.
+Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen sowie `while`- und `for`-Schleifen ist verstanden.
 
-Die nächsten Schritte konzentrieren sich auf Schleifenvarianten, Datenstrukturen und den Aufbau größerer Programme.
+Die nächsten Schritte konzentrieren sich auf Datenstrukturen und die Verarbeitung von mehreren Werten gleichzeitig.
 
 ---
 
@@ -545,3 +618,5 @@ Die nächsten Schritte konzentrieren sich auf Schleifenvarianten, Datenstrukture
 ✅ Zwischenprüfung 01 bestanden
 
 ✅ Lektion 08 abgeschlossen
+
+✅ Lektion 09 abgeschlossen
