@@ -439,12 +439,6 @@ Ausgabe:
 5
 ```
 
-## for
-## range()
-## range() mit Schrittweite
-## Rückwärts zählen mit for
-## Vergleich: while und for
-
 ---
 
 ## Rückwärts zählen
@@ -560,6 +554,346 @@ die irgendwann False wird.
 
 ---
 
+## for
+
+```python
+for zahl in range(1, 6):
+    print(zahl)
+```
+
+Ausgabe:
+
+```text
+1
+2
+3
+4
+5
+```
+
+💡 Merksatz:
+
+```text
+Die for-Schleife eignet sich besonders,
+wenn die Anzahl der Wiederholungen bekannt ist.
+```
+
+---
+
+## range()
+
+Aufbau:
+
+```python
+range(start, ende)
+```
+
+Beispiel:
+
+```python
+range(1, 6)
+```
+
+Ergebnis:
+
+```text
+1
+2
+3
+4
+5
+```
+
+💡 Wichtig:
+
+```text
+Der Endwert wird nicht mit ausgegeben.
+```
+
+---
+
+## range() mit Schrittweite
+
+Aufbau:
+
+```python
+range(start, ende, schrittweite)
+```
+
+Beispiel:
+
+```python
+for zahl in range(0, 11, 2):
+    print(zahl)
+```
+
+Ausgabe:
+
+```text
+0
+2
+4
+6
+8
+10
+```
+
+💡 Merksatz:
+
+```text
+Die Schrittweite bestimmt,
+um wie viel der Wert erhöht wird.
+```
+
+---
+
+## Rückwärts zählen mit for
+
+```python
+for zahl in range(10, 0, -1):
+    print(zahl)
+```
+
+Ausgabe:
+
+```text
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+```
+
+💡 Merksatz:
+
+```text
+Eine negative Schrittweite zählt rückwärts.
+```
+
+---
+
+## Vergleich: while und for
+
+while:
+
+```python
+zahl = 1
+
+while zahl <= 5:
+    print(zahl)
+    zahl += 1
+```
+
+for:
+
+```python
+for zahl in range(1, 6):
+    print(zahl)
+```
+
+Ergebnis:
+
+```text
+1
+2
+3
+4
+5
+```
+
+💡 Empfehlung:
+
+```text
+Bekannte Anzahl von Wiederholungen → for
+
+Unbekannte Anzahl von Wiederholungen → while
+```
+
+---
+
+# 📋 Listen
+
+## Liste erstellen
+
+```python
+staedte = ["Belm", "Osnabrück", "Bohmte"]
+```
+
+💡 Merksatz:
+
+```text
+Eine Liste speichert mehrere Werte
+in einer Variablen.
+```
+
+---
+
+## Ganze Liste ausgeben
+
+```python
+print(staedte)
+```
+
+Ausgabe:
+
+```text
+['Belm', 'Osnabrück', 'Bohmte']
+```
+
+---
+
+## Auf Elemente zugreifen
+
+```python
+print(staedte[0])
+```
+
+Ausgabe:
+
+```text
+Belm
+```
+
+💡 Merksatz:
+
+```text
+Listen beginnen bei Index 0.
+```
+
+Beispiel:
+
+```text
+Index 0 = erstes Element
+Index 1 = zweites Element
+Index 2 = drittes Element
+```
+
+---
+
+## IndexError
+
+```python
+staedte = ["Belm", "Osnabrück", "Bohmte"]
+
+print(staedte[3])
+```
+
+Fehler:
+
+```text
+IndexError: list index out of range
+```
+
+💡 Merksatz:
+
+```text
+Der verwendete Index existiert nicht.
+```
+
+---
+
+## Element ändern
+
+```python
+staedte = ["Belm", "Osnabrück", "Bohmte"]
+
+staedte[2] = "Berlin"
+```
+
+Ergebnis:
+
+```text
+['Belm', 'Osnabrück', 'Berlin']
+```
+
+💡 Merksatz:
+
+```text
+liste[index] = neuer_wert
+
+überschreibt den vorhandenen Wert.
+```
+
+---
+
+## Elemente anhängen
+
+```python
+staedte = ["Belm", "Osnabrück"]
+
+staedte.append("Berlin")
+```
+
+Ergebnis:
+
+```text
+['Belm', 'Osnabrück', 'Berlin']
+```
+
+💡 Merksatz:
+
+```text
+append() fügt ein Element
+am Ende der Liste hinzu.
+```
+
+---
+
+## Länge einer Liste
+
+```python
+print(len(staedte))
+```
+
+💡 Merksatz:
+
+```text
+len() liefert die Anzahl der Elemente.
+```
+
+---
+
+## Letztes Element ermitteln
+
+```python
+staedte[len(staedte) - 1]
+```
+
+oder kürzer:
+
+```python
+staedte[-1]
+```
+
+💡 Merksatz:
+
+```text
+-1 = letztes Element
+-2 = vorletztes Element
+-3 = drittletztes Element
+```
+
+Beispiel:
+
+```python
+staedte = ["Belm", "Osnabrück", "Berlin", "Hamburg"]
+
+print(staedte[-1])
+```
+
+Ausgabe:
+
+```text
+Hamburg
+```
+
+---
+
 # ⚙️ Funktionen
 
 Folgt später.
@@ -642,4 +976,16 @@ python3 dateiname.py
 
 ✅ Rückwärts zählen mit for
 
-🔜 Als Nächstes: Listen
+✅ Listen erstellen
+
+✅ Auf Listenelemente zugreifen
+
+✅ Werte ändern
+
+✅ append()
+
+✅ len()
+
+✅ Negative Indizes
+
+🔜 Als Nächstes: Listen und for-Schleifen kombinieren
