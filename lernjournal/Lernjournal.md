@@ -224,41 +224,7 @@ Axel
 
 ✅ `round()` rundet eine Zahl.
 
-Beispiele:
-
-```python
-int(54.9)
-```
-
-Ergebnis:
-
-```text
-54
-```
-
-```python
-round(54.9)
-```
-
-Ergebnis:
-
-```text
-55
-```
-
 ✅ Nicht jeder String kann in einen Integer umgewandelt werden.
-
-Beispiel:
-
-```python
-int("Axel")
-```
-
-Ergebnis:
-
-```text
-ValueError
-```
 
 ### 🎯 Status
 
@@ -287,30 +253,7 @@ ValueError
 
 ✅ Mit `else` wird die Alternative ausgeführt.
 
-Verwendete Vergleichsoperatoren:
-
-```python
-<    kleiner als
-<=   kleiner oder gleich
->    größer als
->=   größer oder gleich
-==   gleich
-!=   ungleich
-```
-
 ✅ Der Unterschied zwischen `=` und `==` wurde verstanden.
-
-```python
-=
-```
-
-weist einer Variablen einen Wert zu.
-
-```python
-==
-```
-
-vergleicht zwei Werte miteinander.
 
 ### 🎯 Status
 
@@ -342,19 +285,7 @@ vergleicht zwei Werte miteinander.
 
 ✅ `and` bedeutet, dass beide Bedingungen wahr sein müssen.
 
-Beispiel:
-
-```python
-alter >= 18 and alter <= 66
-```
-
 ✅ `or` bedeutet, dass mindestens eine Bedingung wahr sein muss.
-
-Beispiel:
-
-```python
-alter < 18 or alter > 67
-```
 
 ### 🎯 Status
 
@@ -454,73 +385,95 @@ alter < 18 or alter > 67
 
 ✅ `range(start, ende)` erzeugt einen Zahlenbereich.
 
-Beispiel:
-
-```python
-for zahl in range(1, 11):
-    print(zahl)
-```
-
 ✅ Das Ende wird bei `range()` nicht mit ausgegeben.
-
-Beispiel:
-
-```python
-range(1, 6)
-```
-
-ergibt:
-
-```text
-1
-2
-3
-4
-5
-```
 
 ✅ Mit einer Schrittweite können Zahlen übersprungen werden.
 
-Beispiel:
-
-```python
-for zahl in range(0, 11, 2):
-    print(zahl)
-```
-
-Ergebnis:
-
-```text
-0
-2
-4
-6
-8
-10
-```
-
 ✅ Mit einer negativen Schrittweite kann rückwärts gezählt werden.
 
+### 🎯 Status
+
+✅ Verstanden
+
+---
+
+## ✅ Lektion 10 – Listen
+
+### 📚 Gelernt
+
+- Listen erstellen
+- Elemente über den Index lesen
+- Elemente ändern
+- Elemente hinzufügen
+- Listenlänge bestimmen
+- Negative Indizes verwenden
+
+### 💻 Übungen
+
+- Liste mit Städten erstellt
+- Auf einzelne Listenelemente zugegriffen
+- Elemente geändert
+- Neue Elemente mit `append()` hinzugefügt
+- Listenlänge mit `len()` bestimmt
+- Letztes Element einer Liste ermittelt
+
+### 💡 Erkenntnisse
+
+✅ Eine Liste kann mehrere Werte in einer Variablen speichern.
+
 Beispiel:
 
 ```python
-for zahl in range(10, 0, -1):
-    print(zahl)
+staedte = ["Belm", "Osnabrück", "Berlin"]
 ```
 
-Ergebnis:
+✅ Listen beginnen bei Index `0`.
+
+Beispiel:
 
 ```text
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
+0 = Belm
+1 = Osnabrück
+2 = Berlin
+```
+
+✅ Ein ungültiger Index führt zu:
+
+```text
+IndexError: list index out of range
+```
+
+✅ Mit
+
+```python
+liste[index] = wert
+```
+
+kann ein vorhandener Wert geändert werden.
+
+✅ Mit
+
+```python
+append()
+```
+
+wird ein neues Element am Ende der Liste angefügt.
+
+✅ Mit
+
+```python
+len()
+```
+
+kann die Anzahl der Elemente ermittelt werden.
+
+✅ Negative Indizes zählen vom Ende der Liste.
+
+Beispiel:
+
+```text
+-1 = letztes Element
+-2 = vorletztes Element
 ```
 
 ### 🎯 Status
@@ -573,17 +526,27 @@ Bisher sicher verstanden:
 
 ✅ Rückwärts zählen mit range()
 
+✅ Listen
+
+✅ Listenindizes
+
+✅ append()
+
+✅ len()
+
+✅ Negative Indizes
+
 ---
 
 # 🎯 Nächste Lektionen
-
-🔜 Listen
 
 🔜 Schleifen mit Listen
 
 🔜 Verschachtelte Schleifen
 
 🔜 Erste kleine Projekte
+
+🔜 Listen erweitern
 
 🔜 Zwischenprüfung 02
 
@@ -593,9 +556,9 @@ Bisher sicher verstanden:
 
 Die Grundlagen von Python sind gelegt.
 
-Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen sowie `while`- und `for`-Schleifen ist verstanden.
+Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen, Schleifen und einfachen Listen ist verstanden.
 
-Die nächsten Schritte konzentrieren sich auf Datenstrukturen und die Verarbeitung von mehreren Werten gleichzeitig.
+Die nächsten Schritte konzentrieren sich auf die Verarbeitung mehrerer Werte mit Listen und Schleifen.
 
 ---
 
@@ -620,3 +583,5 @@ Die nächsten Schritte konzentrieren sich auf Datenstrukturen und die Verarbeitu
 ✅ Lektion 08 abgeschlossen
 
 ✅ Lektion 09 abgeschlossen
+
+✅ Lektion 10 abgeschlossen
