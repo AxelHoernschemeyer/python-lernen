@@ -36,9 +36,6 @@
 #staedte = ["Belm", "Osnabrück", "Berlin", "Hamburg"]
 #print(staedte[-2])
 
-
 staedte = ["Belm", "Osnabrück", "Berlin", "Hamburg"]
-
-print(len(staedte))
-print(staedte[len(staedte) - 1])
 print(staedte[-1])
+
