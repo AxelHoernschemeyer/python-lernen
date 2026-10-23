@@ -1,16 +1,27 @@
 # 🐍 Python Nachschlagewerk
 
-> Persönliches Nachschlagewerk für die Python-Ausbildung.
->
-> Ziel: Python verstehen, anwenden und eigene Programme entwickeln.
+> **Persönliches Nachschlagewerk für die Python-Ausbildung**  
+> *Ziel:* Python verstehen, anwenden und eigene Programme entwickeln.
 
 ---
 
-# 📝 Variablen
+## 📌 Inhaltsverzeichnis
 
-Zuweisung und Ausgabe mit `print()`.
+- [1. Variablen](#1-variablen)
+- [2. Datentypen & Typprüfung](#2-datentypen--typprüfung)
+- [3. Rechenoperatoren](#3-rechenoperatoren)
+- [4. Datentyp-Umwandlung & String-Operationen](#4-datentyp-umwandlung--string-operationen)
+- [5. Ein- und Ausgaben](#5-ein--und-ausgaben)
+- [6. Bedingungen & Logische Operatoren](#6-bedingungen--logische-operatoren)
+- [7. Schleifen (`while` & `for`)](#7-schleifen-while--for)
+- [8. Listen](#8-listen)
+- [9. Nützliche Befehle & Ausblick](#9-nützliche-befehle--ausblick)
 
-In Python ist keine separate Deklaration notwendig. Python bestimmt den Datentyp anhand des zugewiesenen Wertes automatisch.
+---
+
+## 1. Variablen
+
+Variables store values in memory. In Python, no explicit declaration is required—Python determines the data type automatically based on the assigned value.
 
 ```python
 name = "Axel"
@@ -20,324 +31,148 @@ print(name, alter)
 print("Mein Name:", name, "Mein Alter:", alter)
 ```
 
-💡 Merksatz:
+> 💡 **Merksatz:**  
+> `Variable = Name für einen gespeicherten Wert im Arbeitsspeicher`
 
-```text
-Variable = Name für einen gespeicherten Wert
+---
+
+## 2. Datentypen & Typprüfung
+
+### Die wichtigsten Grunddatentypen
+
+| Datentyp | Kurzzeichen | Bedeutung | Beispiel |
+| :--- | :--- | :--- | :--- |
+| **String** | `str` | Text | `"Axel"` |
+| **Integer** | `int` | Ganze Zahl | `54` |
+| **Float** | `float` | Gleitkommazahl | `1.82` |
+| **Boolean** | `bool` | Wahrheitswert | `True` / `False` |
+
+### Beispiele & Datentyp mit `type()` prüfen
+
+```python
+name = "Axel"         # str
+alter = 54            # int
+groesse = 1.82        # float
+verheiratet = True    # bool
+
+# Datentypen abfragen:
+print(type(name))         # <class 'str'>
+print(type(alter))        # <class 'int'>
+print(type(groesse))      # <class 'float'>
+print(type(verheiratet))  # <class 'bool'>
 ```
 
 ---
 
-# 🔢 Datentypen
+## 3. Rechenoperatoren
 
-## Die wichtigsten Datentypen
+### Grundrechenarten
 
-| Datentyp | Bedeutung | Beispiel |
-|-----------|-----------|-----------|
-| `str` | Text | `"Axel"` |
-| `int` | Ganze Zahl | `54` |
-| `float` | Kommazahl | `1.82` |
-| `bool` | Wahr/Falsch | `True` |
+```python
++   # Addition (z. B. 5 + 3 = 8)
+-   # Subtraktion (z. B. 10 - 4 = 6)
+*   # Multiplikation (z. B. 3 * 4 = 12)
+/   # Division (z. B. 10 / 2 = 5.0 -> liefert immer float)
+```
+
+### Spezielle Operatoren
+
+```python
+//  # Ganzzahldivision (schneidet Nachkommastellen ab)
+%   # Modulo (liefert den Rest einer Division)
+**  # Potenzierung (berechnet Basis hoch Exponent)
+```
+
+**Beispiele:**
+```python
+print(20 // 3)  # Ergebnis: 6
+print(20 % 3)   # Ergebnis: 2 (Rest von 20 / 3)
+print(5 ** 2)   # Ergebnis: 25 (5 hoch 2)
+```
+
+> 💡 **Merksätze:**  
+> - `%` (Modulo) liefert den **Rest** einer Division.  
+> - `//` (Ganzzahldivision) entfernt alle Nachkommastellen ohne zu runden.  
+> - `**` berechnet eine **Potenz**.
 
 ---
 
-## 📝 String (str)
+## 4. Datentyp-Umwandlung & String-Operationen
+
+### Typumwandlung (`Typecasting`)
 
 ```python
-name = "Axel"
-alter = "54"
+# String zu Integer
+zahl_text = "54"
+zahl_int = int(zahl_text)
+
+# String zu Float
+komma_zahl = float("54.3")
 ```
+
+### Unterschied: `int()` vs. `round()`
+
+```python
+int(54.9)    # Ergebnis: 54 (schneidet Nachkommastellen einfach ab)
+round(54.9)  # Ergebnis: 55 (rundet kaufmännisch)
+```
+
+> 💡 **Merksatz:**  
+> `int() = abschneiden` | `round() = runden`
+
+### Fehlerquellen bei `int()`
+
+```python
+int("54")    # OK -> 54
+int("Axel")  # Fehler! -> ValueError: invalid literal for int()
+```
+
+### String-Verknüpfung und Multiplikation
+
+| Operation | Code | Ergebnis | Anmerkung |
+| :--- | :--- | :--- | :--- |
+| Text + Text | `"54" + "1"` | `"541"` | Konkatenation (Verbindung) |
+| Zahl + Zahl | `54 + 1` | `55` | Mathematische Addition |
+| Text * Zahl | `"Axel" * 3` | `"AxelAxelAxel"` | Textwiederholung |
+| Text + Zahl | `"54" + 1` | ❌ `TypeError` | Nicht erlaubt! |
 
 ---
 
-## 🔢 Integer (int)
+## 5. Ein- und Ausgaben
 
-```python
-alter = 54
-```
-
----
-
-## 📏 Float (float)
-
-```python
-groesse = 1.82
-```
-
----
-
-## ✅ Boolean (bool)
-
-```python
-verheiratet = True
-aktiv = False
-```
-
----
-
-## 🔍 Datentyp prüfen
-
-```python
-print(type(name))
-print(type(alter))
-print(type(groesse))
-print(type(verheiratet))
-```
-
----
-
-# 🧮 Rechenoperatoren
-
-```python
-+   # Addition
--   # Subtraktion
-*   # Multiplikation
-/   # Division
-```
-
-## Weitere Operatoren
-
-```python
-//  # Ganzzahldivision
-%   # Modulo (Rest)
-**  # Potenz
-```
-
-### Beispiele
-
-```python
-20 // 3
-# Ergebnis: 6
-```
-
-```python
-20 % 3
-# Ergebnis: 2
-```
-
-```python
-5 ** 2
-# Ergebnis: 25
-```
-
-💡 Merksätze:
-
-```text
-Modulo liefert den Rest einer Division.
-```
-
-```text
-** berechnet eine Potenz.
-```
-
----
-
-# 🔄 Datentypen umwandeln
-
-## String → Integer
-
-```python
-zahl = input("Zahl: ")
-
-zahl = int(zahl)
-
-print(zahl + 1)
-```
-
-## String → Float
-
-```python
-zahl = float("54.3")
-```
-
----
-
-## 📐 int() und round()
-
-```python
-int(54.9)
-# Ergebnis: 54
-```
-
-```python
-round(54.9)
-# Ergebnis: 55
-```
-
-💡 Merksatz:
-
-```text
-int()   = abschneiden
-round() = runden
-```
-
----
-
-## ⚠️ Fehler bei int()
-
-Gültig:
-
-```python
-int("54")
-```
-
-Ungültig:
-
-```python
-int("Axel")
-```
-
-Fehler:
-
-```text
-ValueError
-```
-
-💡 Merksatz:
-
-```text
-Nur Texte, die wie Zahlen aussehen,
-können mit int() umgewandelt werden.
-```
-
----
-
-# 🔤 Strings und Addition
-
-## String + String
-
-```python
-"54" + "1"
-```
-
-Ergebnis:
-
-```text
-541
-```
-
----
-
-## String + Zahl
-
-```python
-"54" + 1
-```
-
-Ergebnis:
-
-```text
-TypeError
-```
-
----
-
-## String multiplizieren
-
-```python
-"Axel" * 5
-```
-
-Ergebnis:
-
-```text
-AxelAxelAxelAxelAxel
-```
-
-```python
-"5" * 3
-```
-
-Ergebnis:
-
-```text
-555
-```
-
-💡 Merksatz:
-
-```text
-Text + Text = OK
-
-Zahl + Zahl = OK
-
-Text + Zahl = Fehler
-```
-
----
-
-# ⌨️ Ein- und Ausgaben
-
-## Benutzereingaben
+### Benutzereingaben mit `input()`
 
 ```python
 name = input("Wie heißt du? ")
+alter_str = input("Wie alt bist du? ")
+
+# Umwandlung für Rechnungen notwendig:
+alter_int = int(alter_str)
 ```
 
-💡 Merksatz:
-
-```text
-input() liefert immer einen String (str) zurück.
-```
-
-Beispiel:
-
-```python
-alter = input("Alter: ")
-```
-
-Auch bei Eingabe:
-
-```text
-54
-```
-
-bleibt der Datentyp:
-
-```python
-str
-```
+> 💡 **Merksatz:**  
+> `input()` liefert **immer** einen String (`str`) zurück, selbst wenn eine Zahl eingegeben wird!
 
 ---
 
-# 🤔 Bedingungen
+## 6. Bedingungen & Logische Operatoren
 
-## Vergleichsoperatoren
+### Vergleichsoperatoren
 
-```python
-<    kleiner als
-<=   kleiner oder gleich
->    größer als
->=   größer oder gleich
-==   gleich
-!=   ungleich
-```
+| Operator | Bedeutung |
+| :---: | :--- |
+| `<` | kleiner als |
+| `<=` | kleiner oder gleich |
+| `>` | größer als |
+| `>=` | größer oder gleich |
+| `==` | gleich (Wertvergleich) |
+| `!=` | ungleich |
 
----
-
-## if
+### Verzweigungen (`if`, `elif`, `else`)
 
 ```python
-if alter < 18:
-    print("Du bist minderjährig.")
-```
+note = 2
 
----
-
-## if / else
-
-```python
-if alter < 18:
-    print("Du bist minderjährig.")
-else:
-    print("Du bist volljährig.")
-```
-
----
-
-## if / elif / else
-
-```python
 if note == 1:
     print("Sehr gut")
 elif note == 2:
@@ -348,644 +183,143 @@ else:
     print("Unbekannte Note")
 ```
 
-💡 Merksatz:
+> 💡 **Wichtig:**  
+> Bei `if / elif / else` arbeitet Python von oben nach unten und führt **nur den ersten zutreffenden Zweig** aus.
 
-```text
-if    = wenn
+### Logische Operatoren (`and`, `or`)
 
-elif  = sonst wenn
-
-else  = ansonsten
-```
-
-💡 Wichtig:
-
-```text
-Bei if / elif / else wird nur
-der erste zutreffende Zweig ausgeführt.
-```
-
----
-
-## Logische Operatoren
-
-### and
+- **`and`**: Beide Bedingungen müssen wahr (`True`) sein.
+- **`or`**: Mindestens eine Bedingung muss wahr (`True`) sein.
 
 ```python
+# and-Beispiel
 if alter >= 18 and alter <= 66:
-    print("Erwachsene Person")
+    print("Erwachsene Person im erwerbsfähigen Alter")
+
+# or-Beispiel
+if alter < 18 or alter >= 67:
+    print("Sondergruppe (Kind/Jugendlicher oder Rentner)")
 ```
 
-💡 Bedeutung:
+#### Wahrheitstabellen
 
 ```text
-Beide Bedingungen müssen wahr sein.
+False and False -> False        False or False -> False
+True  and False -> False        True  or False -> True
+False and True  -> False        False or True  -> True
+True  and True  -> True         True  or True  -> True
 ```
 
 ---
 
-### or
+## 7. Schleifen (`while` & `for`)
+
+### `while`-Schleife (Bedingungsgesteuert)
+
+Wird ausgeführt, solange eine Bedingung `True` ist.
 
 ```python
-if alter < 18 or alter > 67:
-    print("Sondergruppe")
-```
-
-💡 Bedeutung:
-
-```text
-Mindestens eine Bedingung muss wahr sein.
-```
-
----
-
-### Wahrheitswerte
-
-```text
-False and False = False
-True  and False = False
-False and True  = False
-True  and True  = True
-```
-
-```text
-False or False = False
-True  or False = True
-False or True  = True
-True  or True  = True
-```
-
----
-
-# 🔁 Schleifen
-
-## while
-
-```python
+# Vorwärts zählen
 zahl = 1
-
 while zahl <= 5:
     print(zahl)
-    zahl += 1
-```
+    zahl += 1  # Kurzform für: zahl = zahl + 1
 
-Ausgabe:
-
-```text
-1
-2
-3
-4
-5
-```
-
----
-
-## Rückwärts zählen
-
-```python
+# Rückwärts zählen
 zahl = 5
-
 while zahl >= 1:
     print(zahl)
-    zahl -= 1
+    zahl -= 1  # Kurzform für: zahl = zahl - 1
 ```
 
-Ausgabe:
+> ⚠️ **Achtung vor Endlosschleifen:**  
+> Wird die Zählvariable nicht verändert, bleibt die Bedingung ewig `True`. Eine `while`-Schleife benötigt immer eine Veränderung, die die Bedingung irgendwann `False` werden lässt.
 
-```text
-5
-4
-3
-2
-1
+### `for`-Schleife (Anzahl-gesteuert mit `range()`)
+
+Ideal, wenn die Anzahl der Wiederholungen im Voraus bekannt ist.
+
+```python
+# range(start, ende) -> Endwert ist EXKLUSIV (wird nicht erreicht)
+for i in range(1, 6):
+    print(i)  # Gibt 1, 2, 3, 4, 5 aus
+
+# range(start, ende, schrittweite)
+for i in range(0, 11, 2):
+    print(i)  # Gibt 0, 2, 4, 6, 8, 10 aus
+
+# Rückwärts zählen mit negativer Schrittweite
+for i in range(10, 0, -1):
+    print(i)  # Gibt 10 bis 1 aus
 ```
+
+### Praxis-Vergleich: `while` vs. `for`
+
+| Merkmal | `while`-Schleife | `for`-Schleife |
+| :--- | :--- | :--- |
+| **Einsatzbereich** | Wenn Wiederholungsanzahl unklar ist | Wenn Anzahl der Durchläufe bekannt ist |
+| **Zähler** | Muss manuell erstellt & erhöht werden | Wird automatisch von `range()` / Liste gesteuert |
 
 ---
 
-## Schleife mit Bedingung
+## 8. Listen
 
-```python
-zahl = 1
+Eine Liste speichert mehrere Werte geordnet in einer einzigen Variable.
 
-while zahl <= 10:
-    if zahl % 2 == 0:
-        print(zahl)
-
-    zahl += 1
-```
-
-Ausgabe:
-
-```text
-2
-4
-6
-8
-10
-```
-
----
-
-## Schleife mit Benutzereingabe
-
-```python
-zahl = int(input("Bitte Zahl eingeben: "))
-
-zaehler = 1
-
-while zaehler <= zahl:
-    print(zaehler)
-    zaehler += 1
-```
-
----
-
-## Kurzschreibweisen
-
-```python
-zahl += 1
-```
-
-entspricht:
-
-```python
-zahl = zahl + 1
-```
-
----
-
-```python
-zahl -= 1
-```
-
-entspricht:
-
-```python
-zahl = zahl - 1
-```
-
----
-
-## ⚠️ Endlosschleifen
-
-Fehler:
-
-```python
-zahl = 1
-
-while zahl <= 5:
-    print(zahl)
-```
-
-💡 Problem:
-
-```text
-zahl wird nie verändert.
-Die Bedingung bleibt immer True.
-```
-
-💡 Merksatz:
-
-```text
-Eine while-Schleife benötigt eine Bedingung,
-die irgendwann False wird.
-```
-
----
-
-## for
-
-```python
-for zahl in range(1, 6):
-    print(zahl)
-```
-
-Ausgabe:
-
-```text
-1
-2
-3
-4
-5
-```
-
-💡 Merksatz:
-
-```text
-Die for-Schleife eignet sich besonders,
-wenn die Anzahl der Wiederholungen bekannt ist.
-```
-
----
-
-## range()
-
-Aufbau:
-
-```python
-range(start, ende)
-```
-
-Beispiel:
-
-```python
-range(1, 6)
-```
-
-Ergebnis:
-
-```text
-1
-2
-3
-4
-5
-```
-
-💡 Wichtig:
-
-```text
-Der Endwert wird nicht mit ausgegeben.
-```
-
----
-
-## range() mit Schrittweite
-
-Aufbau:
-
-```python
-range(start, ende, schrittweite)
-```
-
-Beispiel:
-
-```python
-for zahl in range(0, 11, 2):
-    print(zahl)
-```
-
-Ausgabe:
-
-```text
-0
-2
-4
-6
-8
-10
-```
-
-💡 Merksatz:
-
-```text
-Die Schrittweite bestimmt,
-um wie viel der Wert erhöht wird.
-```
-
----
-
-## Rückwärts zählen mit for
-
-```python
-for zahl in range(10, 0, -1):
-    print(zahl)
-```
-
-Ausgabe:
-
-```text
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-```
-
-💡 Merksatz:
-
-```text
-Eine negative Schrittweite zählt rückwärts.
-```
-
----
-
-## Vergleich: while und for
-
-while:
-
-```python
-zahl = 1
-
-while zahl <= 5:
-    print(zahl)
-    zahl += 1
-```
-
-for:
-
-```python
-for zahl in range(1, 6):
-    print(zahl)
-```
-
-Ergebnis:
-
-```text
-1
-2
-3
-4
-5
-```
-
-💡 Empfehlung:
-
-```text
-Bekannte Anzahl von Wiederholungen → for
-
-Unbekannte Anzahl von Wiederholungen → while
-```
-
----
-
-# 📋 Listen
-
-## Liste erstellen
-
-```python
-staedte = ["Belm", "Osnabrück", "Bohmte"]
-```
-
-💡 Merksatz:
-
-```text
-Eine Liste speichert mehrere Werte
-in einer Variablen.
-```
-
----
-
-## Ganze Liste ausgeben
-
-```python
-print(staedte)
-```
-
-Ausgabe:
-
-```text
-['Belm', 'Osnabrück', 'Bohmte']
-```
-
----
-
-## Auf Elemente zugreifen
-
-```python
-print(staedte[0])
-```
-
-Ausgabe:
-
-```text
-Belm
-```
-
-💡 Merksatz:
-
-```text
-Listen beginnen bei Index 0.
-```
-
-Beispiel:
-
-```text
-Index 0 = erstes Element
-Index 1 = zweites Element
-Index 2 = drittes Element
-```
-
----
-
-## IndexError
+### Erstellen & Zugreifen
 
 ```python
 staedte = ["Belm", "Osnabrück", "Bohmte"]
 
-print(staedte[3])
+# Auf Elemente über den Index zugreifen (beginnt bei 0):
+print(staedte[0])  # "Belm"
+print(staedte[1])  # "Osnabrück"
 ```
 
-Fehler:
+> 💡 **Merksätze:**  
+> - Indizes beginnen immer bei **0**.  
+> - Negative Indizes zählen vom Ende: `staedte[-1]` liefert das **letzte** Element.
 
-```text
-IndexError: list index out of range
-```
-
-💡 Merksatz:
-
-```text
-Der verwendete Index existiert nicht.
-```
-
----
-
-## Element ändern
+### Bearbeiten & Hinzufügen
 
 ```python
-staedte = ["Belm", "Osnabrück", "Bohmte"]
+# Element ändern
+staedte[2] = "Berlin"  # Ersetzt "Bohmte" durch "Berlin"
 
-staedte[2] = "Berlin"
+# Neues Element am Ende anfügen
+staedte.append("Hamburg")
+
+# Anzahl der Elemente ermitteln
+anzahl = len(staedte)
+print(f"Anzahl Städte: {anzahl}")
 ```
 
-Ergebnis:
-
-```text
-['Belm', 'Osnabrück', 'Berlin']
-```
-
-💡 Merksatz:
-
-```text
-liste[index] = neuer_wert
-
-überschreibt den vorhandenen Wert.
-```
-
----
-
-## Elemente anhängen
+### Häufiger Fehler: `IndexError`
 
 ```python
-staedte = ["Belm", "Osnabrück"]
-
-staedte.append("Berlin")
-```
-
-Ergebnis:
-
-```text
-['Belm', 'Osnabrück', 'Berlin']
-```
-
-💡 Merksatz:
-
-```text
-append() fügt ein Element
-am Ende der Liste hinzu.
+print(staedte[10])  # ❌ IndexError: list index out of range
 ```
 
 ---
 
-## Länge einer Liste
+## 9. Nützliche Befehle & Ausblick
 
-```python
-print(len(staedte))
-```
-
-💡 Merksatz:
-
-```text
-len() liefert die Anzahl der Elemente.
-```
-
----
-
-## Letztes Element ermitteln
-
-```python
-staedte[len(staedte) - 1]
-```
-
-oder kürzer:
-
-```python
-staedte[-1]
-```
-
-💡 Merksatz:
-
-```text
--1 = letztes Element
--2 = vorletztes Element
--3 = drittletztes Element
-```
-
-Beispiel:
-
-```python
-staedte = ["Belm", "Osnabrück", "Berlin", "Hamburg"]
-
-print(staedte[-1])
-```
-
-Ausgabe:
-
-```text
-Hamburg
-```
-
----
-
-# ⚙️ Funktionen
-
-Folgt später.
-
----
-
-# 📂 Dateien
-
-Folgt später.
-
----
-
-# 🛟 Fehlerbehandlung
-
-Folgt später.
-
----
-
-# 📦 Module und Pakete
-
-Folgt später.
-
----
-
-# 🗄️ Datenbanken
-
-Folgt später.
-
----
-
-# 💻 Nützliche Befehle
-
-Python-Version anzeigen:
+### Terminal-Befehle
 
 ```bash
+# Python-Version prüfen:
 python3 --version
-```
 
-Python-Datei ausführen:
-
-```bash
+# Python-Skript ausführen:
 python3 dateiname.py
 ```
 
+### Ausblick auf kommende Lektionen
+
+- 🔜 **Lektion 11:** Schleifen mit Listen kombinieren (`for stadt in staedte:`)
+- 🔜 **Funktionen** (`def meine_funktion():`)
+- 🔜 **Dateizugriffe** (Dateien lesen & schreiben)
+- 🔜 **Fehlerbehandlung** (`try / except`)
+- 🔜 **Module & Datenbanken** (Oracle, PDF-Auswertungen)
+
 ---
-
-# 🚀 Aktueller Lernstand
-
-✅ Variablen
-
-✅ Datentypen
-
-✅ Rechnen
-
-✅ Datentyp-Umwandlung
-
-✅ Benutzereingaben
-
-✅ Bedingungen mit `if`
-
-✅ Bedingungen mit `else`
-
-✅ Bedingungen mit `elif`
-
-✅ Logische Operatoren (`and`, `or`)
-
-✅ while-Schleifen
-
-✅ Endlosschleifen
-
-✅ Schleifen mit Bedingungen
-
-✅ Schleifen mit Benutzereingaben
-
-✅ for-Schleifen
-
-✅ range()
-
-✅ Schrittweiten
-
-✅ Rückwärts zählen mit for
-
-✅ Listen erstellen
-
-✅ Auf Listenelemente zugreifen
-
-✅ Werte ändern
-
-✅ append()
-
-✅ len()
-
-✅ Negative Indizes
-
-🔜 Als Nächstes: Listen und for-Schleifen kombinieren
