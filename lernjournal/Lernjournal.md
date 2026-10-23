@@ -1,587 +1,306 @@
 # 🐍 Python Lernjournal
 
-> Repository: `python-lernen`
->
-> 🎯 Hauptziel:
->
-> Python von Grund auf lernen und sicher anwenden können.
->
-> 🚀 Langfristige Schwerpunkte:
->
-> - Python-Grundlagen
-> - Datentypen und Datenstrukturen
-> - Bedingungen und Schleifen
-> - Funktionen und Module
-> - Fehlerbehandlung
-> - Dateien lesen und schreiben
-> - Objektorientierte Programmierung (OOP)
-> - Automatisierung
-> - Datenverarbeitung
-> - PDF-Auswertung
-> - Datenbankanbindungen
->
-> 🛠️ Praxisprojekte:
->
-> - PDF-Rechnungen auswerten
-> - Daten validieren
-> - Fehler protokollieren
-> - Datenbanken anbinden
-> - Eigene Python-Anwendungen entwickeln
+> **Repository:** `python-lernen`  
+> **Ziel:** Python von Grund auf lernen und sicher für Automatisierungen, Datenverarbeitung & Datenbankanbindungen anwenden.
 
 ---
 
-# 📅 17.10.2026
+## 📌 Inhaltsverzeichnis
 
-## ✅ Lektion 01 – Variablen und Ausgaben
+- [Überblick & Ziele](#überblick--ziele)
+- [Lektion 01 – Variablen und Ausgaben](#lektion-01--variablen-und-ausgaben)
+- [Lektion 02 – Datentypen](#lektion-02--datentypen)
+- [Lektion 03 – Rechnen mit Zahlen](#lektion-03--rechnen-mit-zahlen)
+- [Lektion 04 – Benutzereingaben](#lektion-04--benutzereingaben)
+- [Lektion 05 – Datentypen umwandeln](#lektion-05--datentypen-umwandeln)
+- [Lektion 06 – Bedingungen mit `if`](#lektion-06--bedingungen-mit-if)
+- [Lektion 07 – Bedingungen mit `elif` & logische Operatoren](#lektion-07--bedingungen-mit-elif--logische-operatoren)
+- [ Zwischenprüfung 01](#-zwischenprüfung-01)
+- [Lektion 08 – Schleifen mit `while`](#lektion-08--schleifen-mit-while)
+- [Lektion 09 – `for`-Schleifen](#lektion-09--for-schleifen)
+- [Lektion 10 – Listen](#lektion-10--listen)
+- [📊 Zusammenfassung & Aktueller Lernstand](#-zusammenfassung--aktueller-lernstand)
+- [🎯 Nächste Meilensteine](#-nächste-meilensteine)
+
+---
+
+## Überblick & Ziele
+
+### 🚀 Langfristige Schwerpunkte
+- Python-Grundlagen (Variablen, Bedingungen, Schleifen, Listen)
+- Datentypen & Datenstrukturen
+- Funktionen, Module & Dateiverarbeitung (`open()`, `read()`, `write()`)
+- Fehlerbehandlung (`try` / `except`)
+- Objektorientierte Programmierung (OOP)
+- Automatisierung, PDF-Auswertungen & Datenbankanbindungen (Oracle)
+
+### 🛠️ Praxisprojekte
+- PDF-Rechnungen automatisiert auswerten
+- Daten validieren & Fehler protokollieren
+- Datenbanken anbinden & Importprozesse steuern
+
+---
+
+## Lektion 01 – Variablen und Ausgaben
 
 ### 📚 Gelernt
-
-- Variablen anlegen
-- Werte zuweisen
-- Texte und Zahlen ausgeben
-- `print()` verwenden
-- Variablen in Ausgaben verwenden
+- Variablen anlegen und Werte zuweisen
+- Texte und Zahlen mit `print()` ausgeben
+- Variablen in Ausgaben kombinieren
 
 ### 💻 Übungen
-
 - Persönliche Daten in Variablen gespeichert
-- Eigene Ausgaben mit `print()` erstellt
+- Eigene Textausgaben mit `print()` erstellt
 
 ### 💡 Erkenntnisse
-
-✅ Variablen müssen nicht deklariert werden.
-
-✅ Python erkennt den Datentyp automatisch.
-
-✅ Mehrere Werte können mit `print()` ausgegeben werden.
+✅ In Python müssen Variablen nicht explizit deklariert werden.  
+✅ Python erkennt den Datentyp automatisch anhand des zugewiesenen Wertes.  
+✅ Mehrere Werte können per Komma getrennt in `print()` ausgegeben werden.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 02 – Datentypen
+## Lektion 02 – Datentypen
 
 ### 📚 Gelernt
 
 | Datentyp | Beschreibung | Beispiel |
-|-----------|-----------|-----------|
-| `str` | Text | `"Axel"` |
-| `int` | Ganze Zahl | `54` |
-| `float` | Kommazahl | `1.82` |
-| `bool` | Wahr/Falsch | `True` |
+| :--- | :--- | :--- |
+| `str` | Text (String) | `"Axel"` |
+| `int` | Ganze Zahl (Integer) | `54` |
+| `float` | Gleitkommazahl (Float) | `1.82` |
+| `bool` | Wahrheitswert (Boolean) | `True` / `False` |
 
 ### 💻 Übungen
-
-- Datentypen angelegt
-- Datentypen mit `type()` geprüft
+- Variablen mit verschiedenen Datentypen angelegt
+- Datentypen mit `type()` überprüft
 
 ### 💡 Erkenntnisse
-
-✅ Python unterscheidet zwischen Text und Zahlen.
-
-✅ Der gleiche Inhalt kann unterschiedliche Datentypen besitzen.
-
-Beispiele:
-
-```text
-54   → int
-"54" → str
-1.82 → float
-True → bool
-```
+✅ Python unterscheidet strikt zwischen Text und Zahlen.  
+✅ Identisch aussehende Inhalte können unterschiedliche Datentypen besitzen:
+- `54` $\rightarrow$ `int`
+- `"54"` $\rightarrow$ `str`
+- `1.82` $\rightarrow$ `float`
+- `True` $\rightarrow$ `bool`
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 03 – Rechnen mit Zahlen
+## Lektion 03 – Rechnen mit Zahlen
 
 ### 📚 Gelernt
-
-- Addition (`+`)
-- Subtraktion (`-`)
-- Multiplikation (`*`)
-- Division (`/`)
+- Grundrechenarten: Addition (`+`), Subtraktion (`-`), Multiplikation (`*`), Division (`/`)
 - Ganzzahldivision (`//`)
 - Modulo (`%`)
 
 ### 💻 Übungen
-
 - Rechnen mit Variablen
-- Ganzzahldivision
-- Modulo
+- Restwertbestimmung mit Modulo
+- Ganzzahlige Ergebnisse ohne Nachkommastellen berechnen
 
 ### 💡 Erkenntnisse
-
-✅ Modulo liefert den Rest einer Division.
-
-Beispiel:
-
-```text
-20 % 3 = 2
-```
-
-✅ Ganzzahldivision entfernt Nachkommastellen.
-
-Beispiel:
-
-```text
-20 // 3 = 6
-```
-
-✅ Strings können mit einer Zahl multipliziert werden.
-
-Beispiel:
-
-```python
-"Axel" * 5
-```
-
-Ergebnis:
-
-```text
-AxelAxelAxelAxelAxel
-```
-
-✅ Eine Addition von String und Integer führt zu einem Fehler.
-
-Beispiel:
-
-```python
-"5" + 1
-```
-
-Ergebnis:
-
-```text
-TypeError
-```
+✅ Modulo (`%`) liefert den Rest einer Division (z. B. `20 % 3` $\rightarrow$ `2`).  
+✅ Ganzzahldivision (`//`) schneidet Nachkommastellen ab (z. B. `20 // 3` $\rightarrow$ `6`).  
+✅ Strings können mit Integer multipliziert werden (z. B. `"Axel" * 3` $\rightarrow$ `"AxelAxelAxel"`).  
+✅ Addition von String und Integer führt zu einem `TypeError` (z. B. `"5" + 1`).
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 04 – Benutzereingaben
+## Lektion 04 – Benutzereingaben
 
 ### 📚 Gelernt
-
-- Benutzereingaben mit `input()`
-- Ausgaben von Benutzereingaben
-- Einfache Interaktion mit dem Benutzer
+- Interaktive Benutzereingaben mit `input()`
+- Verarbeitung und Ausgabe von Eingaben
 
 ### 💻 Übungen
-
-- Vorname abfragen
-- Alter abfragen
-- Wohnort abfragen
+- Vorname, Alter und Wohnort über die Konsole abgefragt
+- Eingaben personalisiert ausgegeben
 
 ### 💡 Erkenntnisse
-
-✅ `input()` liefert immer einen String (`str`) zurück.
-
-Folgende Eingaben liefern alle einen String:
-
-```text
-54
-54.3
-Axel
-```
-
-✅ Auch Zahlen bleiben zunächst Text.
+✅ `input()` liefert **immer** einen String (`str`) zurück – selbst wenn der Benutzer eine Zahl eingibt.  
+✅ Zahlen aus `input()` müssen vor mathematischen Rechnungen umgewandelt werden.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 05 – Datentypen umwandeln
+## Lektion 05 – Datentypen umwandeln
 
 ### 📚 Gelernt
-
-- Umwandlung mit `int()`
-- Umwandlung mit `float()`
-- Unterschied zwischen `int()` und `round()`
+- Typumwandlung mit `int()` und `float()`
+- Unterscheidung zwischen `int()` und `round()`
 
 ### 💻 Übungen
-
-- Benutzereingaben in Zahlen umwandeln
-- Zahlen addieren
+- Benutzereingaben in Zahlen umgewandelt und mathematisch berechnet
+- Verhalten bei Nachkommastellen getestet
 
 ### 💡 Erkenntnisse
-
-✅ `int()` wandelt einen String in eine Ganzzahl um.
-
-✅ `float()` wandelt einen String in eine Kommazahl um.
-
-✅ `int()` schneidet Nachkommastellen ab.
-
-✅ `round()` rundet eine Zahl.
-
-✅ Nicht jeder String kann in einen Integer umgewandelt werden.
+✅ `int()` wandelt Strings in Ganzzahlen um und schneidet Nachkommastellen ab (`int(54.9)` $\rightarrow$ `54`).  
+✅ `round()` rundet kaufmännisch (`round(54.9)` $\rightarrow$ `55`).  
+✅ Nur Strings, die reine Ziffern enthalten, können mit `int()` umgewandelt werden (andernfalls `ValueError`).
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 06 – Bedingungen mit if
+## Lektion 06 – Bedingungen mit `if`
 
 ### 📚 Gelernt
-
-- Vergleichsoperatoren
-- `if`
-- `else`
+- Vergleichsoperatoren (`<`, `<=`, `>`, `>=`, `==`, `!=`)
+- Verzweigungen mit `if` und `else`
 
 ### 💻 Übungen
-
-- Volljährigkeit prüfen
-- Minderjährigkeit prüfen
+- Prüfen von Volljährigkeit und Minderjährigkeit
 
 ### 💡 Erkenntnisse
-
-✅ Bedingungen liefern entweder `True` oder `False`.
-
-✅ Mit `if` werden Entscheidungen getroffen.
-
-✅ Mit `else` wird die Alternative ausgeführt.
-
-✅ Der Unterschied zwischen `=` und `==` wurde verstanden.
+✅ Bedingungen ergeben immer den Wahrheitswert `True` oder `False`.  
+✅ `=` ist die Wertzuweisung, `==` ist der Wertvergleich.  
+✅ Mit `else` wird der Alternativzweig ausgeführt, wenn die `if`-Bedingung nicht zutrifft.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 07 – Bedingungen mit elif
+## Lektion 07 – Bedingungen mit `elif` & logische Operatoren
 
 ### 📚 Gelernt
-
-- `elif`
-- Mehrere Bedingungen prüfen
+- Mehrfachverzweigungen mit `elif`
 - Logische Operatoren `and` und `or`
 
 ### 💻 Übungen
-
-- Schulnoten auswerten
-- Altersgruppen bestimmen
-- Mehrere Bedingungen in einer Abfrage verarbeiten
+- Auswertung von Schulnoten
+- Zuordnung von Altersgruppen
+- Kombination mehrerer Bedingungen in einer Abfrage
 
 ### 💡 Erkenntnisse
-
-✅ Mit `elif` können mehrere Bedingungen nacheinander geprüft werden.
-
-✅ Python arbeitet bei `if / elif / else` von oben nach unten.
-
-✅ Nur der erste zutreffende Zweig wird ausgeführt.
-
-✅ `and` bedeutet, dass beide Bedingungen wahr sein müssen.
-
-✅ `or` bedeutet, dass mindestens eine Bedingung wahr sein muss.
+✅ Python arbeitet `if / elif / else` von oben nach unten ab und führt **nur den ersten zutreffenden Zweig** aus.  
+✅ `and`: Beide Bedingungen müssen wahr sein.  
+✅ `or`: Mindestens eine Bedingung muss wahr sein.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
 ## 📝 Zwischenprüfung 01
 
-### 📚 Themen
-
-- Variablen
-- Datentypen
-- Rechenoperatoren
-- Benutzereingaben
-- Datentypumwandlung
-- Bedingungen
-- Vergleichsoperatoren
-- `and`
-- `or`
+### 📚 Geprüfte Themen
+Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Typumwandlung, Verzweigungen (`if`/`elif`/`else`), Vergleichsoperatoren, `and`, `or`.
 
 ### 🏆 Ergebnis
-
 **9 von 10 Punkten**
 
 ### 💡 Erkenntnisse
-
-✅ Datentypen sicher verstanden
-
-✅ Rechenoperatoren sicher verstanden
-
-✅ Bedingungen sicher verstanden
-
-✅ Unterschied zwischen `=` und `==` verstanden
-
-⚠️ Aufgabenstellungen vollständig lesen
+✅ Grundlegende Syntax und Logik sicher beherrscht.  
+⚠️ Wichtiger Merksatz für die Zukunft: Aufgabenstellungen genau und vollständig lesen.
 
 ### 🎯 Status
-
 ✅ Bestanden
 
 ---
 
-## ✅ Lektion 08 – Schleifen mit while
+## Lektion 08 – Schleifen mit `while`
 
 ### 📚 Gelernt
-
-- `while`
-- Zählvariablen
-- Endlosschleifen
-- Schleifen mit Bedingungen kombinieren
+- Bedingungsgesteuerte Schleifen mit `while`
+- Zählvariablen und Kurzschreibweisen (`+= 1`, `-= 1`)
+- Vermeidung von Endlosschleifen
+- Kombination von Schleifen und `if`-Bedingungen
 
 ### 💻 Übungen
-
-- Zahlen von 1 bis 5 ausgeben
-- Rückwärts zählen
-- Quadratzahlen berechnen
-- Gerade und ungerade Zahlen erkennen
-- Benutzereingaben mit Schleifen kombinieren
+- Vorwärts- und Rückwärtszählen
+- Berechnung von Quadratzahlen
+- Unterscheidung gerader und ungerader Zahlen
+- Dynamische Schleifendurchläufe mit Benutzereingabe
 
 ### 💡 Erkenntnisse
-
-✅ Eine `while`-Schleife wird ausgeführt, solange die Bedingung `True` ist.
-
-✅ Der Schleifenzähler muss verändert werden.
-
-✅ Schleifen können mit Bedingungen kombiniert werden.
-
-✅ Benutzereingaben können als Obergrenze einer Schleife verwendet werden.
-
-✅ `+= 1` erhöht eine Variable um 1.
+✅ `while`-Schleifen laufen, solange die Bedingung `True` bleibt.  
+✅ Die Zählvariable muss innerhalb der Schleife angepasst werden, um Endlosschleifen zu vermeiden.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 09 – for-Schleifen
+## Lektion 09 – `for`-Schleifen
 
 ### 📚 Gelernt
-
-- `for`
-- `range()`
-- Schrittweiten
+- Anzahlgesteuerte Schleifen mit `for`
+- Zahlenbereiche erzeugen mit `range(start, ende, schrittweite)`
 - Rückwärts zählen mit negativer Schrittweite
 
 ### 💻 Übungen
-
-- Zahlen von 1 bis 10 ausgeben
-- Gerade Zahlen mit Schrittweite 2 ausgeben
-- Rückwärts von 10 bis 1 zählen
+- Zahlenreihen ausgeben (1 bis 10)
+- Gerade Zahlen mit Schrittweite `2` ausgeben
+- Rückwärts zählen (10 bis 1)
 
 ### 💡 Erkenntnisse
-
-✅ Die `for`-Schleife eignet sich besonders, wenn die Anzahl der Wiederholungen bekannt ist.
-
-✅ `range(start, ende)` erzeugt einen Zahlenbereich.
-
-✅ Das Ende wird bei `range()` nicht mit ausgegeben.
-
-✅ Mit einer Schrittweite können Zahlen übersprungen werden.
-
-✅ Mit einer negativen Schrittweite kann rückwärts gezählt werden.
+✅ Ideal, wenn die Anzahl der Durchläufe im Voraus bekannt ist.  
+✅ Bei `range(start, ende)` ist der Endwert **exklusiv** (wird nicht erreicht).
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-## ✅ Lektion 10 – Listen
+## Lektion 10 – Listen
 
 ### 📚 Gelernt
-
-- Listen erstellen
-- Elemente über den Index lesen
-- Elemente ändern
-- Elemente hinzufügen
-- Listenlänge bestimmen
-- Negative Indizes verwenden
+- Erstellen von Listen (`liste = [...]`)
+- Lese- und Schreibzugriff über Indizes (beginnend bei `0`)
+- Neue Elemente mit `.append()` hinzufügen
+- Listenlänge bestimmen mit `len()`
+- Zugriff vom Ende mit negativen Indizes (`-1`, `-2`)
 
 ### 💻 Übungen
-
-- Liste mit Städten erstellt
-- Auf einzelne Listenelemente zugegriffen
-- Elemente geändert
-- Neue Elemente mit `append()` hinzugefügt
-- Listenlänge mit `len()` bestimmt
-- Letztes Element einer Liste ermittelt
+- Städteliste angelegt und gepflegt
+- Elemente geändert und erweitert
+- Letztes Element per negativem Index ermittelt
 
 ### 💡 Erkenntnisse
-
-✅ Eine Liste kann mehrere Werte in einer Variablen speichern.
-
-Beispiel:
-
-```python
-staedte = ["Belm", "Osnabrück", "Berlin"]
-```
-
-✅ Listen beginnen bei Index `0`.
-
-Beispiel:
-
-```text
-0 = Belm
-1 = Osnabrück
-2 = Berlin
-```
-
-✅ Ein ungültiger Index führt zu:
-
-```text
-IndexError: list index out of range
-```
-
-✅ Mit
-
-```python
-liste[index] = wert
-```
-
-kann ein vorhandener Wert geändert werden.
-
-✅ Mit
-
-```python
-append()
-```
-
-wird ein neues Element am Ende der Liste angefügt.
-
-✅ Mit
-
-```python
-len()
-```
-
-kann die Anzahl der Elemente ermittelt werden.
-
-✅ Negative Indizes zählen vom Ende der Liste.
-
-Beispiel:
-
-```text
--1 = letztes Element
--2 = vorletztes Element
-```
+✅ Indizes starten bei `0`.  
+✅ `liste[-1]` greift direkt auf das letzte Element zu.  
+✅ Nicht existierende Indizes lösen einen `IndexError: list index out of range` aus.
 
 ### 🎯 Status
-
 ✅ Verstanden
 
 ---
 
-# 📚 Zusammenfassung des aktuellen Lernstands
+## 📊 Zusammenfassung & Aktueller Lernstand
 
-Bisher sicher verstanden:
-
-✅ Variablen
-
-✅ Ausgaben mit `print()`
-
-✅ Datentypen
-
-✅ Datentypen prüfen mit `type()`
-
-✅ Rechenoperatoren
-
-✅ Ganzzahldivision
-
-✅ Modulo
-
-✅ Benutzereingaben
-
-✅ Datentypen umwandeln
-
-✅ Bedingungen mit `if`
-
-✅ Bedingungen mit `else`
-
-✅ Bedingungen mit `elif`
-
-✅ Logische Operatoren (`and`, `or`)
-
-✅ while-Schleifen
-
-✅ Endlosschleifen erkennen
-
-✅ Schleifen mit Bedingungen kombinieren
-
-✅ for-Schleifen
-
-✅ range()
-
-✅ Schrittweiten
-
-✅ Rückwärts zählen mit range()
-
-✅ Listen
-
-✅ Listenindizes
-
-✅ append()
-
-✅ len()
-
-✅ Negative Indizes
+| Thema / Konzept | Status |
+| :--- | :---: |
+| Variablen & Ausgaben (`print`) | ✅ |
+| Grunddatentypen (`str`, `int`, `float`, `bool`) & `type()` | ✅ |
+| Rechenoperatoren, Ganzzahldivision (`//`), Modulo (`%`) | ✅ |
+| Benutzereingaben (`input()`) & Typumwandlung (`int()`, `float()`, `round()`) | ✅ |
+| Verzweigungen (`if`, `elif`, `else`) & Logik (`and`, `or`) | ✅ |
+| `while`-Schleifen & Zähler | ✅ |
+| `for`-Schleifen & `range()` (inkl. Schrittweiten) | ✅ |
+| Listen (Indizes ab `0`, `.append()`, `len()`, negative Indizes) | ✅ |
 
 ---
 
-# 🎯 Nächste Lektionen
+## 🎯 Nächste Meilensteine
 
-🔜 Schleifen mit Listen
-
-🔜 Verschachtelte Schleifen
-
-🔜 Erste kleine Projekte
-
-🔜 Listen erweitern
-
-🔜 Zwischenprüfung 02
+- 🔜 **Lektion 11:** Schleifen mit Listen kombinieren (Gefilterte Ausgaben)
+- 🔜 Verschachtelte Schleifen
+- 🔜 Erste kleine Praxisprojekte
+- 🔜 Funktionen (`def`)
+- 🔜 Dateizugriffe & Fehlerbehandlung (`try/except`)
+- 🔜 PDF-Auswertung & Oracle-Anbindung
 
 ---
 
-# 🚀 Persönliches Fazit
-
-Die Grundlagen von Python sind gelegt.
-
-Der Umgang mit Variablen, Datentypen, Rechenoperatoren, Benutzereingaben, Bedingungen, Schleifen und einfachen Listen ist verstanden.
-
-Die nächsten Schritte konzentrieren sich auf die Verarbeitung mehrerer Werte mit Listen und Schleifen.
-
----
-
-# 📍 Aktueller Stand
-
-✅ Lektion 01 abgeschlossen
-
-✅ Lektion 02 abgeschlossen
-
-✅ Lektion 03 abgeschlossen
-
-✅ Lektion 04 abgeschlossen
-
-✅ Lektion 05 abgeschlossen
-
-✅ Lektion 06 abgeschlossen
-
-✅ Lektion 07 abgeschlossen
-
-✅ Zwischenprüfung 01 bestanden
-
-✅ Lektion 08 abgeschlossen
-
-✅ Lektion 09 abgeschlossen
-
-✅ Lektion 10 abgeschlossen
+*Stand: Aktuelle Lerneinheit vor Lektion 11*
