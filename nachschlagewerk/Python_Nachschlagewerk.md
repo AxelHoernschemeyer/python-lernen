@@ -15,7 +15,12 @@
 - [6. Bedingungen & Logische Operatoren](#6-bedingungen--logische-operatoren)
 - [7. Schleifen (`while` & `for`)](#7-schleifen-while--for)
 - [8. Listen](#8-listen)
-- [9. Nützliche Befehle & Ausblick](#9-nützliche-befehle--ausblick)
+- [9. Schleifen mit Listen](#9-schleifen-mit-listen)
+- [10. Nützliche Listenfunktionen](#10-nützliche-listenfunktionen)
+- [11. Verschachtelte Schleifen](#11-verschachtelte-schleifen)
+- [12. Eigene Funktionen (`def`), Parameter & Mehrfach-Rückgabe](#12-eigene-funktionen-def-parameter--mehrfach-rückgabe)
+- [13. Dateizugriffe (`open()`) & Text-Parsing](#13-dateizugriffe-open--text-parsing)
+- [14. Nützliche Befehle & Ausblick](#14-nützliche-befehle--ausblick)
 
 ---
 
@@ -168,6 +173,13 @@ alter_int = int(alter_str)
 | `==` | gleich (Wertvergleich) |
 | `!=` | ungleich |
 
+### Verkettete Vergleiche (Chained Comparisons)
+
+```python
+if 20 <= temp <= 25:
+    print("Angenehmes Wetter")
+```
+
 ### Verzweigungen (`if`, `elif`, `else`)
 
 ```python
@@ -191,74 +203,25 @@ else:
 - **`and`**: Beide Bedingungen müssen wahr (`True`) sein.
 - **`or`**: Mindestens eine Bedingung muss wahr (`True`) sein.
 
-```python
-# and-Beispiel
-if alter >= 18 and alter <= 66:
-    print("Erwachsene Person im erwerbsfähigen Alter")
-
-# or-Beispiel
-if alter < 18 or alter >= 67:
-    print("Sondergruppe (Kind/Jugendlicher oder Rentner)")
-```
-
-#### Wahrheitstabellen
-
-```text
-False and False -> False        False or False -> False
-True  and False -> False        True  or False -> True
-False and True  -> False        False or True  -> True
-True  and True  -> True         True  or True  -> True
-```
-
 ---
 
 ## 7. Schleifen (`while` & `for`)
 
 ### `while`-Schleife (Bedingungsgesteuert)
 
-Wird ausgeführt, solange eine Bedingung `True` ist.
-
 ```python
-# Vorwärts zählen
 zahl = 1
 while zahl <= 5:
     print(zahl)
-    zahl += 1  # Kurzform für: zahl = zahl + 1
-
-# Rückwärts zählen
-zahl = 5
-while zahl >= 1:
-    print(zahl)
-    zahl -= 1  # Kurzform für: zahl = zahl - 1
+    zahl += 1
 ```
-
-> ⚠️ **Achtung vor Endlosschleifen:**  
-> Wird die Zählvariable nicht verändert, bleibt die Bedingung ewig `True`. Eine `while`-Schleife benötigt immer eine Veränderung, die die Bedingung irgendwann `False` werden lässt.
 
 ### `for`-Schleife (Anzahl-gesteuert mit `range()`)
 
-Ideal, wenn die Anzahl der Wiederholungen im Voraus bekannt ist.
-
 ```python
-# range(start, ende) -> Endwert ist EXKLUSIV (wird nicht erreicht)
 for i in range(1, 6):
-    print(i)  # Gibt 1, 2, 3, 4, 5 aus
-
-# range(start, ende, schrittweite)
-for i in range(0, 11, 2):
-    print(i)  # Gibt 0, 2, 4, 6, 8, 10 aus
-
-# Rückwärts zählen mit negativer Schrittweite
-for i in range(10, 0, -1):
-    print(i)  # Gibt 10 bis 1 aus
+    print(i)  # Gibt 1 bis 5 aus
 ```
-
-### Praxis-Vergleich: `while` vs. `for`
-
-| Merkmal | `while`-Schleife | `for`-Schleife |
-| :--- | :--- | :--- |
-| **Einsatzbereich** | Wenn Wiederholungsanzahl unklar ist | Wenn Anzahl der Durchläufe bekannt ist |
-| **Zähler** | Muss manuell erstellt & erhöht werden | Wird automatisch von `range()` / Liste gesteuert |
 
 ---
 
@@ -266,60 +229,109 @@ for i in range(10, 0, -1):
 
 Eine Liste speichert mehrere Werte geordnet in einer einzigen Variable.
 
-### Erstellen & Zugreifen
-
 ```python
 staedte = ["Belm", "Osnabrück", "Bohmte"]
+print(staedte[0])   # "Belm"
+print(staedte[-1])  # "Bohmte" (letztes Element)
+staedte.append("Hamburg")
+```
 
-# Auf Elemente über den Index zugreifen (beginnt bei 0):
-print(staedte[0])  # "Belm"
-print(staedte[1])  # "Osnabrück"
+---
+
+## 9. Schleifen mit Listen
+
+```python
+for stadt in staedte:
+    print(stadt)
+```
+
+---
+
+## 10. Nützliche Listenfunktionen
+
+| Funktion | Beschreibung | Beispiel | Ergebnis |
+| :--- | :--- | :--- | :--- |
+| `len(liste)` | Anzahl der Elemente | `len([1, 2, 3])` | `3` |
+| `sum(liste)` | Summe aller Elemente | `sum([1, 2, 3])` | `6` |
+| `min(liste)` | Kleinstes Element | `min([1, 2, 3])` | `1` |
+| `max(liste)` | Größtes Element | `max([1, 2, 3])` | `3` |
+
+---
+
+## 11. Verschachtelte Schleifen
+
+```python
+vornamen = ["Axel", "Lena"]
+nachnamen = ["Müller", "Weber"]
+
+for name in vornamen:
+    for name2 in nachnamen:
+        print(name, name2)
+```
+
+---
+
+## 12. Eigene Funktionen (`def`), Parameter & Mehrfach-Rückgabe
+
+### Basic Funktion mit `def` und Docstring
+```python
+def quadrat(zahl):
+    """Berechnet das Quadrat einer Zahl."""
+    return zahl * zahl
+```
+
+### Parameter mit Standardwerten & Mehrfach-Rückgabe (Unpacking)
+```python
+def statistik(zahlen, mwst=19):
+    summe = sum(zahlen)
+    anzahl = len(zahlen)
+    schnitt = round(summe / anzahl, 2)
+    return summe, anzahl, schnitt
+
+# Aufruf & Unpacking:
+gesamtsumme, anzahl, schnitt = statistik([10, 20, 30])
+```
+
+---
+
+## 13. Dateizugriffe (`open()`) & Text-Parsing
+
+### Schreiben und Lesen mit `with open()`
+```python
+# Schreiben ("w"):
+with open("datei.txt", "w", encoding="utf-8") as datei:
+    datei.write("Zeile 1
+Zeile 2")
+
+# Lesen ("r"):
+with open("datei.txt", "r", encoding="utf-8") as datei:
+    inhalt = datei.read()
+```
+
+### Zeilenweises Lesen & CSV-Parsing
+```python
+with open("daten.csv", "r", encoding="utf-8") as datei:
+    for zeile in datei:
+        spalten = zeile.strip().split(",")
+        print(f"ID: {spalten[0]}, Name: {spalten[1]}, Wert: {spalten[2]}")
 ```
 
 > 💡 **Merksätze:**  
-> - Indizes beginnen immer bei **0**.  
-> - Negative Indizes zählen vom Ende: `staedte[-1]` liefert das **letzte** Element.
-
-### Bearbeiten & Hinzufügen
-
-```python
-# Element ändern
-staedte[2] = "Berlin"  # Ersetzt "Bohmte" durch "Berlin"
-
-# Neues Element am Ende anfügen
-staedte.append("Hamburg")
-
-# Anzahl der Elemente ermitteln
-anzahl = len(staedte)
-print(f"Anzahl Städte: {anzahl}")
-```
-
-### Häufiger Fehler: `IndexError`
-
-```python
-print(staedte[10])  # ❌ IndexError: list index out of range
-```
+> - `with open(...)` schließt die Datei automatisch.  
+> - `encoding="utf-8"` sichert plattformübergreifend Umlaute und Sonderzeichen.  
+> - `.strip()` entfernt Zeilenumbrüche (`
+`) und Leerzeichen an den Rändern.  
+> - `.split(",")` zerlegt eine Zeichenkette am Trennzeichen in eine Liste.
 
 ---
 
-## 9. Nützliche Befehle & Ausblick
+## 14. Nützliche Befehle & Ausblick
 
 ### Terminal-Befehle
-
 ```bash
-# Python-Version prüfen:
-python3 --version
-
-# Python-Skript ausführen:
 python3 dateiname.py
 ```
 
-### Ausblick auf kommende Lektionen
-
-- 🔜 **Lektion 11:** Schleifen mit Listen kombinieren (`for stadt in staedte:`)
-- 🔜 **Funktionen** (`def meine_funktion():`)
-- 🔜 **Dateizugriffe** (Dateien lesen & schreiben)
+### Ausblick
 - 🔜 **Fehlerbehandlung** (`try / except`)
-- 🔜 **Module & Datenbanken** (Oracle, PDF-Auswertungen)
-
----
+- 🔜 **Oracle-Datenbankanbindung** (`oracledb`) & SQL-Imports
