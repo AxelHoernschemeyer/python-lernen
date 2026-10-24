@@ -7,23 +7,24 @@
 
 ## 📌 Schnellzugriff & Dokumentation
 
-- 📖 **[Lernjournal](lernjournal/LERNJOURNAL.md)** – Chronologische Dokumentation aller Lektionen, Übungen und Prüfungen.
+- 📖 **[Lernjournal](lernjournal/LERNJOURNAL.md)** – Chronologische Dokumentation aller Lektionen (01–18), Übungen und Prüfungen.
 - 📚 **[Nachschlagewerk](nachschlagewerk/PYTHON_NACHSCHLAGEWERK.md)** – Kompakte Syntax-Übersicht, Code-Beispiele und Merksätze.
 
 ---
 
 ## 📈 Aktueller Lernstatus
 
-- **Lernstand:** Lektion 11 – Schleifen mit Listen kombinieren (Gefilterte Ausgaben)
-- **Letzter Meilenstein:** Lektion 10 (Listen, Indizes, `.append()`, `len()`)
+- **Lernstand:** Lektion 18 – Zeilenweises Lesen & Text-Parsing (`.strip().split(",")`) ✅
+- **Letzter Meilenstein:** Lektion 17 (Dateizugriffe `open()`) & Lektion 18 (CSV/Text-Parsing)
 - **Zwischenprüfung 01:** ✅ Bestanden (9 / 10 Punkte)
 
 ---
 
 ## 🎯 Schwerpunkte & Lernziele
 
-- **Python-Grundlagen:** Variablen, Datentypen, Bedingungen (`if/elif/else`), Schleifen (`while`/`for`), Listen
-- **Datenverarbeitung & Dateizugriffe:** Dateien lesen, schreiben und strukturieren
+- **Python-Grundlagen:** Variablen, Datentypen, Bedingungen (`if/elif/else`), Schleifen (`while`/`for`), Listen & verschachtelte Schleifen
+- **Funktionen & Modularisierung:** `def`, Parameter-Standardwerte, `return`, Variable-Unpacking
+- **Datenverarbeitung & Dateizugriffe:** Dateien lesen, schreiben, zeilenweise parsen (`open()`, `.strip()`, `.split()`)
 - **Fehlerbehandlung:** Robuster Code mit `try / except`
 - **Praxisprojekte & Automatisierung:**
   - PDF-Rechnungen und Dokumente automatisiert auswerten
@@ -62,7 +63,7 @@ python-lernen
 ## 🛠️ Ausführung & Anwendung
 
 ```bash
-# Skripte ausführen
+# Beispiel: Skript im Terminal ausführen
 python3 lektionen/lektion01_variablen/main.py
 ```
 
