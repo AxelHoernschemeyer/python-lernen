@@ -27,8 +27,11 @@
 #           print() in der Konsole aus.
 
 with open("log.txt", "w", encoding="utf-8") as datei:
-    datei.write("Erste Zeile im Logfile\nZwieite Zeile im Logfile")
+      datei.write("Erste Zeile im Logfile\nZweite Zeile im Logfile")
+
+with open("log.txt", "a", encoding="utf-8") as datei:
+     datei.write("\nDritte Zeile im Logfile\nVierte Zeile im Logfile")
 
 with open("log.txt", "r", encoding="utf-8") as datei:
-    inhalt = datei.read()
-    print(inhalt)
+     inhalt = datei.read()
+     print(inhalt)

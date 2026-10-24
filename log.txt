@@ -1,2 +1,4 @@
 Erste Zeile im Logfile
-Zwieite Zeile im Logfile
+Zweite Zeile im Logfile
+Dritte Zeile im Logfile
+Vierte Zeile im Logfile
