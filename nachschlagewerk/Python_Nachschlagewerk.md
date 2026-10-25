@@ -20,7 +20,10 @@
 - [11. Verschachtelte Schleifen](#11-verschachtelte-schleifen)
 - [12. Eigene Funktionen (`def`), Parameter & Mehrfach-Rückgabe](#12-eigene-funktionen-def-parameter--mehrfach-rückgabe)
 - [13. Dateizugriffe (`open()`) & Text-Parsing](#13-dateizugriffe-open--text-parsing)
-- [14. Nützliche Befehle & Ausblick](#14-nützliche-befehle--ausblick)
+- [14. Fehlerbehandlung (`try / except`)](#14-fehlerbehandlung-try--except)
+- [15. Oracle-Datenbankanbindung (`oracledb`)](#15-oracle-datenbankanbindung-oracledb)
+- [16. Robuster Datei-Import mit Fehler-Logging](#16-robuster-datei-import-mit-fehler-logging)
+- [17. Nützliche Befehle & Ausblick](#17-nützliche-befehle--ausblick)
 
 ---
 
@@ -300,8 +303,7 @@ gesamtsumme, anzahl, schnitt = statistik([10, 20, 30])
 ```python
 # Schreiben ("w"):
 with open("datei.txt", "w", encoding="utf-8") as datei:
-    datei.write("Zeile 1
-Zeile 2")
+    datei.write("Zeile 1\nZeile 2")
 
 # Lesen ("r"):
 with open("datei.txt", "r", encoding="utf-8") as datei:
@@ -319,19 +321,107 @@ with open("daten.csv", "r", encoding="utf-8") as datei:
 > 💡 **Merksätze:**  
 > - `with open(...)` schließt die Datei automatisch.  
 > - `encoding="utf-8"` sichert plattformübergreifend Umlaute und Sonderzeichen.  
-> - `.strip()` entfernt Zeilenumbrüche (`
-`) und Leerzeichen an den Rändern.  
+> - `.strip()` entfernt Zeilenumbrüche (`\n`) und Leerzeichen an den Rändern.  
 > - `.split(",")` zerlegt eine Zeichenkette am Trennzeichen in eine Liste.
 
 ---
 
-## 14. Nützliche Befehle & Ausblick
+## 14. Fehlerbehandlung (`try / except`)
+
+```python
+try:
+    with open("daten.csv", "r", encoding="utf-8") as datei:
+        inhalt = datei.read()
+except FileNotFoundError:
+    print("Fehler: Datei existiert nicht!")
+except Exception as e:
+    print(f"Unerwarteter Fehler: {e}")
+```
+
+---
+
+## 15. Oracle-Datenbankanbindung (`oracledb`)
+
+### Verbindungsaufbau & Abfrage
+```python
+import oracledb
+
+verbindung = oracledb.connect(
+    user="Lernen",
+    password="dein_passwort",
+    dsn="localhost:1521/FREEPDB1"
+)
+cursor = verbindung.cursor()
+
+# SELECT
+cursor.execute("SELECT SYSDATE FROM DUAL")
+ergebnis = cursor.fetchone()
+print(ergebnis[0])
+
+cursor.close()
+verbindung.close()
+```
+
+---
+
+## 16. Robuster Datei-Import mit Fehler-Logging
+
+### CSV-Parsing + Oracle `INSERT` + Logfile
+```python
+import oracledb
+
+FILENAME = "bestellungen.txt"
+
+try:
+    with open(FILENAME, "r", encoding="utf-8") as datei:
+        verbindung = oracledb.connect(
+            user="Lernen",
+            password=input("Passwort: "),
+            dsn="localhost:1521/FREEPDB1"
+        )
+        cursor = verbindung.cursor()
+
+        for zeile in datei:
+            spalten = zeile.strip().split(",")
+
+            try:
+                prod_desc = spalten[1]
+                prod_preis = float(spalten[2])
+                prod_kat = spalten[3].upper()
+
+                tsql = "INSERT INTO PRODUKTE (NAME, PREIS_NETTO, KATEGORIE) VALUES (:1, :2, :3)"
+                cursor.execute(tsql, (prod_desc, prod_preis, prod_kat))
+
+            except (ValueError, IndexError) as e:
+                with open("import_fehler.log", "a", encoding="utf-8") as logfile:
+                    logfile.write(f"[{FILENAME}] Fehlerhafte Zeile: {zeile.strip()} | Grund: {e}
+")
+                continue
+
+        verbindung.commit()
+        cursor.close()
+        verbindung.close()
+
+except FileNotFoundError:
+    print(f"Datei '{FILENAME}' nicht gefunden!")
+except oracledb.Error as e:
+    print(f"DB-Fehler: {e}")
+```
+
+> 💡 **Merksätze:**  
+> - Innerer `try / except`-Block schützt vor Absturz einzelner Datenzeilen.  
+> - Append-Modus `"a"` beim Logfile verhindert das Überschreiben alter Fehlermeldungen.  
+> - Bind-Variablen `:1, :2` immer als Tupel `(val1, val2)` an `cursor.execute()` übergeben.
+
+---
+
+## 17. Nützliche Befehle & Ausblick
 
 ### Terminal-Befehle
 ```bash
+# Python Bibliothek installieren
+python3 -m pip install oracledb
+
+# Python Skript ausführen
 python3 dateiname.py
 ```
-
-### Ausblick
-- 🔜 **Fehlerbehandlung** (`try / except`)
-- 🔜 **Oracle-Datenbankanbindung** (`oracledb`) & SQL-Imports
