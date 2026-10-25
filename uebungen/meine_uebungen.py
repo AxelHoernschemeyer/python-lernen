@@ -1,3 +1,4 @@
+""" Einleitung """
 # In dieser Datei gibt es nur meine eigenen Übungen.
 
 # Aufgabe 1: Benutzer nach Name und Alter fragen und eine Nachricht ausgeben
