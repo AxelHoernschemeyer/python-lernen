@@ -28,6 +28,10 @@
 - [Lektion 16 – Mehrere Rückgabewerte & Variable Unpacking](#lektion-16--mehrere-rückgabewerte--variable-unpacking)
 - [Lektion 17 – Dateizugriffe (`open()`)](#lektion-17--dateizugriffe-open)
 - [Lektion 18 – Zeilenweises Lesen & Text-Parsing](#lektion-18--zeilenweises-lesen--text-parsing)
+- [Lektion 19 – Fehlerbehandlung (`try / except`)](#lektion-19--fehlerbehandlung-try--except)
+- [Lektion 20 – Oracle-Datenbankanbindung (`oracledb`)](#lektion-20--oracle-datenbankanbindung-oracledb)
+- [🛠️ Praxisübung 02 – Datei-Import in Oracle-Datenbank](#️-praxisübung-02--datei-import-in-oracle-datenbank)
+- [Lektion 21 – Fehler-Logging & Robuster CSV-Import](#lektion-21--fehler-logging--robuster-csv-import)
 - [📊 Zusammenfassung & Aktueller Lernstand](#-zusammenfassung--aktueller-lernstand)
 - [🎯 Nächste Meilensteine](#-nächste-meilensteine)
 
@@ -382,7 +386,7 @@ print("Durchschnitt der Woche:", round(summe / len(temperaturen), 1), "°C")
 - Funktionen definieren mit `def funktion_name(parameter):`
 - Codeblöcke wiederverwendbar kapseln (DRY-Prinzip: *Don't Repeat Yourself*)
 - Ergebnisse mit `return` zurückgeben
-- Dokumentation über Docstrings (`""" ... """`)
+- Dokumentation über Docstrings (`"""" ... """`)
 - Beheben von Pylint-Warnungen (`missing-function-docstring`)
 
 ### 💻 Übungen
@@ -461,8 +465,7 @@ print("Durchschnitt der Woche:", round(summe / len(temperaturen), 1), "°C")
 
 ### 📚 Gelernt
 - Zeilenweises Iterieren über Dateien (`for zeile in datei:`) für speichereffiziente Verarbeitung großer Datenmengen
-- Entfernen von unsichtbaren Steuerzeichen & Zeilenumbrüchen (`
-`) mit `.strip()`
+- Entfernen von unsichtbaren Steuerzeichen & Zeilenumbrüchen (`\n`) mit `.strip()`
 - Zerschneiden von strukturierten Textzeilen (CSV-Prinzip) mit `.split(",")` in Listen
 - Gezielter Zugriff auf Spalten über Indizes (`spalten[0]`, `spalten[1]`, etc.)
 - Elegante Formatierung von Strings mit f-Strings (`f"Artikel: {spalten[1]} - Preis: {spalten[2]} €"`)
@@ -473,6 +476,120 @@ print("Durchschnitt der Woche:", round(summe / len(temperaturen), 1), "°C")
 ### 💡 Erkenntnisse
 ✅ Zeilenweises Lesen verbraucht kaum Arbeitsspeicher und eignet sich perfekt für große CSV-Dateien und spätere Datenbank-Imports.  
 ✅ Kombination aus `.strip()` und `.split(",")` zerlegt Rohdaten direkt in sauber verarbeitbare Spalten-Listen.
+
+### 🎯 Status
+✅ Verstanden
+
+---
+
+## Lektion 19 – Fehlerbehandlung (`try / except`)
+
+### 📚 Gelernt
+- Abfangen von Laufzeitfehlern (Exceptions) mit `try / except`
+- Gezieltes Abfangen spezifischer Fehler wie `FileNotFoundError` oder `ValueError`
+- Verhindern von unkontrollierten Programmabstürzen bei fehlenden Dateien oder ungültigen Eingaben
+
+### 💻 Übungen
+- Erstellung einer Fehlerabfrage mit `try:` und `except FileNotFoundError:`, um das Fehlen einer CSV-Export-Datei sauber abzufangen und eine verständliche Fehlermeldung auszugeben.
+
+### 💡 Erkenntnisse
+✅ `try:` umschließt den potenziell fehleranfälligen Codeabschnitt.  
+✅ `except FileNotFoundError:` wird nur ausgeführt, wenn genau dieser Fehler auftritt.  
+✅ Robuste Fehlerbehandlung ist essenziell für automatisierte Import-Skripte und Datenbankprozesse.
+
+### 🎯 Status
+✅ Verstanden
+
+---
+
+## Lektion 20 – Oracle-Datenbankanbindung (`oracledb`)
+
+### 📚 Gelernt
+- Installation von externen Python-Bibliotheken im Terminal über `python3 -m pip install oracledb`
+- Importieren der Bibliotheken ganz oben im Skript (`import oracledb`)
+- Verbindungsaufbau zur lokalen Oracle-Datenbank im Docker-Container (`oracledb.connect(user, password, dsn)`)
+- Arbeiten mit dem Cursor (`verbindung.cursor()`) zum Ausführen von SQL-Abfragen (`cursor.execute()`)
+- Ergebnisabfrage mit `cursor.fetchone()` und formatiertes Ausgeben mit f-Strings
+- Sauberes Schließen von Cursor (`cursor.close()`) und Verbindung (`verbindung.close()`)
+
+### 💻 Übungen
+- Ausführen einer SQL-Abfrage (`SELECT SYSDATE FROM DUAL`) auf der lokalen Oracle-Datenbank und formatierte Ausgabe des Systemdatums.
+
+### 💡 Erkenntnisse
+✅ `import oracledb` muss zwingend vor der ersten Nutzung aufgerufen werden.  
+✅ `cursor.fetchone()` liefert ein Ergebnis-Tupel zurück.  
+✅ Das Schließen von Cursorn und Verbindungen gibt Ressourcen auf dem Datenbankserver wieder frei.
+
+### 🎯 Status
+✅ Verstanden
+
+---
+
+## 🛠️ Praxisübung 02 – Datei-Import in Oracle-Datenbank
+
+### 📚 Gelernt & Angewendet
+- Kombination aus Datei-Parsing (`open()`, `.strip().split(",")`) und Oracle-Datenbankimport (`oracledb`)
+- Übergabe dynamischer Werte an SQL `INSERT` mit Bind-Variablen (`:1, :2, :3`) als Parameter-Tupel
+- Transaktionssteuerung mit `verbindung.commit()` und sauberes Schließen von Cursor und Verbindung
+
+### 💻 Code-Lösung
+```python
+import oracledb
+
+verbindung = oracledb.connect(
+    user="Lernen",
+    password=input("Gib dein Kennwort ein: "),
+    dsn="localhost:1521/FREEPDB1"
+)
+cursor = verbindung.cursor()
+
+# Datei lesen und zeilenweise verarbeiten
+with open("bestellungen.txt", "r", encoding="utf-8") as datei:
+    for zeile in datei:
+        spalten = zeile.strip().split(",")
+
+        prod_description = spalten[1]
+        prod_preis = float(spalten[2])
+        prod_kategorie = "Elektronik"
+
+        # SQL Statement mit Bind-Variablen (OHNE Semikolon am Ende!)
+        tsql = "INSERT INTO PRODUKTE (NAME, PREIS_NETTO, KATEGORIE) VALUES (:1, :2, :3)"
+        
+        # Parameter als Tupel in cursor.execute übergeben
+        cursor.execute(tsql, (prod_description, prod_preis, prod_kategorie))
+
+# Änderungen in der Datenbank speichern
+verbindung.commit()
+print("✅ Alle Produkte sind erfolgreich in die Datenbank geschrieben worden.")
+
+# Schließen
+cursor.close()
+verbindung.close()
+```
+
+### 💡 Erkenntnisse
+✅ **Kein Semikolon in `cursor.execute()`:** SQL-Strings in Python DB-APIs dürfen am Ende kein Semikolon `;` enthalten (sonst `ORA-00911`).  
+✅ **Parameter als Tupel:** Die Werte für Bind-Variablen müssen als Tupel `(val1, val2, val3)` an `cursor.execute(sql, ...)` übergeben werden.  
+✅ **Sichere Kennwortabfrage:** Das Passwort kann mit `input()` interaktiv abgefragt werden.
+
+---
+
+## Lektion 21 – Fehler-Logging & Robuster CSV-Import
+
+### 📚 Gelernt
+- Absichern von einzelnen Schleifendurchläufen durch einen inneren `try / except ValueError:`-Block
+- Fortsetzen der Schleife bei fehlerhaften Datensätzen mittels `continue`
+- Protokollieren von fehlerhaften Zeilen und Ausnahmegründen in einer Log-Datei (`import_fehler.log`) im Anhänge-Modus (`"a"`)
+- Einbinden dynamischer Dateinamen (`FILENAME`) in Log-Einträge
+- Vermeidung von unbeabsichtigten Tupeln bei Variable-Zuweisungen (z. B. Kommas am Zeilenende bei `PASSCODE`)
+
+### 💻 Übungen
+- Erstellung eines erweiterten Import-Skripts `bestellungen_2.txt` mit innerem `try / except ValueError:`, automatischer Logfile-Generierung (`import_fehler.log`) und robuster Fehlerbehandlung bei der Datentyp-Umwandlung.
+
+### 💡 Erkenntnisse
+✅ Ein inneres `try / except` verhindert, dass eine einzelne defekte Zeile den gesamten Importprozess abbricht.  
+✅ Im `"a"`-Modus (Append) werden neue Fehler an die Log-Datei angehängt, ohne alte Protokolle zu überschreiben.  
+✅ Alle Konvertierungen (`float()`, `.upper()`) gehören **in** den `try`-Block, damit Fehler zuverlässig abgefangen werden.
 
 ### 🎯 Status
 ✅ Verstanden
@@ -497,14 +614,19 @@ print("Durchschnitt der Woche:", round(summe / len(temperaturen), 1), "°C")
 | Mehrere Rückgabewerte & Unpacking (`a, b, c = funktion()`) | ✅ |
 | Dateizugriffe mit `open()`, `with`-Block, `"w"`, `"r"`, `"utf-8"` | ✅ |
 | Zeilenweises Lesen, `.strip()`, `.split(",")` & Parsing | ✅ |
+| Fehlerbehandlung (`try / except`, `FileNotFoundError`) | ✅ |
+| Oracle-Anbindung (`oracledb`) & `INSERT` | ✅ |
+| **Praxisübung 02: Datei-Import in Oracle** | ✅ |
+| **Lektion 21: Fehler-Logging & Robuster CSV-Import (`import_fehler.log`)** | ✅ |
 
 ---
 
 ## 🎯 Nächste Meilensteine
 
-- 🔜 **Lektion 19:** Fehlerbehandlung (`try / except`) für robuste Import-Skripte
-- 🔜 **Lektion 20:** Oracle-Datenbankanbindung (`oracledb`) & Datenimport per SQL `INSERT`
+- 🔜 **Automatisierter Batch-Import & Ordnerüberwachung:** Mehrere Dateien aus einem Ordner verarbeiten
+- 🔜 **PDF-Auswertung:** PDF-Rechnungen parsen und Daten automatisiert in Oracle ablegen
 
 ---
 
-*Stand: Aktuelle Lerneinheit nach Lektion 18*
+*Stand: Aktuelle Lerneinheit nach Lektion 21*
+
