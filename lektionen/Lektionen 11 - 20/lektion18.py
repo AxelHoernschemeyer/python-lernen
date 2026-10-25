@@ -1,3 +1,4 @@
+""" Einleitungsbereich """
 # Lektion 18 - Zeilenweise lesen & Text-Parsing (CSV-Prinzip)
 #
 # Zwei wichtige Hilfsmittel für Textzeilen
