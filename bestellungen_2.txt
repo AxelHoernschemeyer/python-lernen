@@ -1,0 +1,4 @@
+104,Drucker,GRATIS,elektronik
+105,USB-Kabel,9.99,elektronik
+106,USB-C-Kabel,19.99,elektronik
+107,PYTHON für Dummies,99.00,buecher
