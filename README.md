@@ -7,28 +7,28 @@
 
 ## 📌 Schnellzugriff & Dokumentation
 
-- 📖 **[Lernjournal](lernjournal/LERNJOURNAL.md)** – Chronologische Dokumentation aller Lektionen (01–18), Übungen und Prüfungen.
+- 📖 **[Lernjournal](lernjournal/LERNJOURNAL.md)** – Chronologische Dokumentation aller Lektionen (01–21), Übungen und Prüfungen.
 - 📚 **[Nachschlagewerk](nachschlagewerk/PYTHON_NACHSCHLAGEWERK.md)** – Kompakte Syntax-Übersicht, Code-Beispiele und Merksätze.
 
 ---
 
 ## 📈 Aktueller Lernstatus
 
-- **Lernstand:** Lektion 18 – Zeilenweises Lesen & Text-Parsing (`.strip().split(",")`) ✅
-- **Letzter Meilenstein:** Lektion 17 (Dateizugriffe `open()`) & Lektion 18 (CSV/Text-Parsing)
+- **Lernstand:** Lektion 21 – Fehler-Logging & Robuster CSV-Import in Oracle (`import_fehler.log`) ✅
+- **Letzter Meilenstein:** Lektion 20 (Oracle `oracledb`), Praxisübung 02 & Lektion 21 (Fehler-Logging & `continue`)
 - **Zwischenprüfung 01:** ✅ Bestanden (9 / 10 Punkte)
 
 ---
 
 ## 🎯 Schwerpunkte & Lernziele
 
-- **Python-Grundlagen:** Variablen, Datentypen, Bedingungen (`if/elif/else`), Schleifen (`while`/`for`), Listen & verschachtelte Schleifen
+- **Python-Grundlagen:** Variablen, Datentypen, Bedingungen (`if/elif/else`), Schleifen (`while`/`for`), Listen
 - **Funktionen & Modularisierung:** `def`, Parameter-Standardwerte, `return`, Variable-Unpacking
 - **Datenverarbeitung & Dateizugriffe:** Dateien lesen, schreiben, zeilenweise parsen (`open()`, `.strip()`, `.split()`)
-- **Fehlerbehandlung:** Robuster Code mit `try / except`
+- **Fehlerbehandlung & Logging:** Robuster Code mit `try / except`, Fehlerprotokollierung in `import_fehler.log`
 - **Praxisprojekte & Automatisierung:**
   - PDF-Rechnungen und Dokumente automatisiert auswerten
-  - Oracle-Datenbankanbindungen & automatisierte Importprozesse
+  - Oracle-Datenbankanbindungen & automatisierte Importprozesse (`oracledb`)
 
 ---
 
@@ -63,8 +63,8 @@ python-lernen
 ## 🛠️ Ausführung & Anwendung
 
 ```bash
-# Beispiel: Skript im Terminal ausführen
-python3 lektionen/lektion01_variablen/main.py
+# Skript im Terminal ausführen
+python3 lektionen/lektion21_oracle_import/main.py
 ```
 
 ---
