@@ -23,7 +23,14 @@
 - [14. Fehlerbehandlung (`try / except`)](#14-fehlerbehandlung-try--except)
 - [15. Oracle-Datenbankanbindung (`oracledb`)](#15-oracle-datenbankanbindung-oracledb)
 - [16. Robuster Datei-Import mit Fehler-Logging](#16-robuster-datei-import-mit-fehler-logging)
-- [17. Nützliche Befehle & Ausblick](#17-nützliche-befehle--ausblick)
+- [17. Oracle-Metadaten & Beispieldaten auslesen](#17-oracle-metadaten--beispieldaten-auslesen)
+- [18. PDF-Parsing mit `pypdf` & Text-Anker-Extraction](#18-pdf-parsing-mit-pypdf--text-anker-extraction)
+- [19. Moderne Pfadverwaltung mit `pathlib` & Projektstruktur](#19-moderne-pfadverwaltung-mit-pathlib--projektstruktur)
+- [20. Nützliche Befehle & Ausblick](#20-nützliche-befehle--ausblick)
+- [21. Modulare Software-Architektur & `match/case`-Parsing](#21-modulare-software-architektur--matchcase-parsing)
+- [22. Python-Interna & `__pycache__` (Bytecode-Cache)](#22-python-interna--pycache-bytecode-cache)
+- [23. Oracle-Import (`RECHNUNGS_KOPF`), Stammdaten-IDs & `shutil`-Archivierung](#23-oracle-import-rechnungs_kopf-stammdaten-ids--shutil-archivierung)
+- [22. Python-Interna & `__pycache__` (Bytecode-Cache)](#22-python-interna--__pycache__-bytecode-cache)
 
 ---
 
@@ -394,8 +401,7 @@ try:
 
             except (ValueError, IndexError) as e:
                 with open("import_fehler.log", "a", encoding="utf-8") as logfile:
-                    logfile.write(f"[{FILENAME}] Fehlerhafte Zeile: {zeile.strip()} | Grund: {e}
-")
+                    logfile.write(f"[{FILENAME}] Fehlerhafte Zeile: {zeile.strip()} | Grund: {e}\n")
                 continue
 
         verbindung.commit()
@@ -415,13 +421,229 @@ except oracledb.Error as e:
 
 ---
 
-## 17. Nützliche Befehle & Ausblick
+## 17. Oracle-Metadaten & Beispieldaten auslesen
+
+### Schema-Export (`USER_TAB_COLUMNS`)
+```python
+cursor.execute("SELECT table_name, column_name, data_type FROM user_tab_columns ORDER BY table_name, column_id")
+```
+
+### Beispieldaten-Export (Oracle 12c+ Syntax)
+```python
+cursor.execute("SELECT * FROM tabelle FETCH FIRST 5 ROWS ONLY")
+```
+
+---
+
+## 18. PDF-Parsing mit `pypdf` & Text-Anker-Extraction
+
+### Öffnen & Text extrahieren
+```python
+from pypdf import PdfReader
+
+reader = PdfReader("rechnung.pdf")
+anzahl_seiten = len(reader.pages)
+
+# Text der ersten Seite auslesen und zeilenweise zerlegen
+seite_1_zeilen = reader.pages[0].extract_text().split("\n")
+```
+
+### Ankerwort-Parsing mit `enumerate()` und relativer Position (`index + 1`)
+```python
+for index, zeile in enumerate(seite_1_zeilen):
+    if "Kunden Nr." in zeile:
+        # Der Wert steht exakt in der Zeile darunter
+        kunden_nr = seite_1_zeilen[index + 1].strip()
+    elif "Rechnung" == zeile:
+        # Exakte Prüfung mit == verhindert falsche Treffer in Sätzen
+        rg_nr = seite_1_zeilen[index + 1].strip()
+```
+
+### Fließtext-Isolierung mit Verkettung von `.split()`
+```python
+elif "in Höhe von" in zeile:
+    # "Wir buchen den Rechnungsbetrag in Höhe von 9,94 EUR..."
+    betrag = zeile.split("in Höhe von ")[1].split(" ")[0]
+```
+
+> 💡 **Merksätze:**  
+> - `pypdf` kann visuelle PDF-Textblöcke in geänderter Reihenfolge liefern $\rightarrow$ immer erst mit `enumerate()` analysieren!  
+> - `.strip()` entfernt Leerzeichen am Anfang und Ende, lässt Binnen-Leerzeichen aber intakt.  
+> - `zeile.split("anker")[1]` liefert alles rechts vom Ankerwort.
+
+---
+
+## 19. Moderne Pfadverwaltung mit `pathlib` & Projektstruktur
+
+Das Python-Standardmodul `pathlib` bietet eine elegante, objektorientierte und plattformunabhängige Möglichkeit, Dateipfade zu verwalten.
+
+```python
+from pathlib import Path
+
+# Bestimmt automatisch den Ordner, in dem die aktuelle Datei liegt:
+BASE_DIR = Path(__file__).parent
+
+# Unterordner dynamisch mit dem Division-Operator / verbinden:
+INBOX_DIRECTORY = BASE_DIR / "inbox"
+ARCHIV_DIRECTORY = BASE_DIR / "archiv"
+
+# Prüfen, ob ein Pfad existiert oder eine Datei ist:
+if INBOX_DIRECTORY.exists():
+    print(f"Ordner vorhanden: {INBOX_DIRECTORY}")
+```
+
+> 💡 **Merksätze:**  
+> - `Path(__file__).parent` ermittelt dynamisch das Verzeichnis der aktuellen Skriptdatei.  
+> - Mit dem `/`-Operator können `Path`-Objekte direkt und plattformunabhängig (Windows `\`, macOS `/`) mit Ordner- und Dateinamen verknüpft werden.  
+> - Projektweite Pfade gehören zentral in eine `config.py` in Großbuchstaben (`BASE_DIR`, `INBOX_DIRECTORY`).
+
+---
+
+## 20. Nützliche Befehle & Ausblick
 
 ### Terminal-Befehle
 ```bash
-# Python Bibliothek installieren
-python3 -m pip install oracledb
-
-# Python Skript ausführen
+python3 -m pip install oracledb pypdf
 python3 dateiname.py
+```
+
+### Nächste Schritte
+- 🔜 **Aussteller-Erkennung (Fingerabdruck-System)**
+- 🔜 **Modularisierung (Auslagerung von Parser-Funktionen)**
+- 🔜 **Typumwandlung & SQL INSERT für `RECHNUNGS_KOPF`**
+
+---
+
+## 21. Modulare Software-Architektur & `match/case`-Parsing
+
+### Parameter (Eingabe) vs. `return` (Ausgabe)
+- **Parameter `(...)`**: Dienen **ausschließlich** dem Liefereingang (Daten in die Funktion hineinreichen). Parameter-Namen sind frei wählbare Platzhalter innerhalb der Funktion.
+- **`return`**: Dient **ausschließlich** der Warenausgabe (Ergebnis nach außen zurückgeben).
+
+```python
+# Liefereingang: pdf_text, db_liste | Warenausgabe: Kreditor-String
+def erkenne_aussteller(pdf_text, db_liste):
+    for kreditor in db_liste:
+        for zeile in pdf_text:
+            if kreditor in zeile:
+                return kreditor
+    return "Kreditor nicht gefunden"
+```
+
+### Modul-Struktur & Orchestrierung in `main.py`
+
+| Modul | Aufgabe | Hauptfunktion |
+| :--- | :--- | :--- |
+| `pdf_utils.py` | Einmaliges Einlesen von PDF-Seiten | `lese_pdf_datei(datei_pfad)` |
+| `datenbank.py` | Oracle-DB-Verbindung & Stammdaten | `get_all_vendor()`, `get_vendor_id()`, `speichere_rechnung()` |
+| `get_vendor.py` | Kreditor-Erkennung gegen DB-Liste | `erkenne_aussteller(pdf_text, db_liste)` |
+| `get_invoice_details.py` | Extraktion von Kopfdaten per `match/case` | `erkenne_rechnungsdetails(pdf_text, aussteller)` |
+| `main.py` | Steuerzentrale & Verknüpfung aller Module | Orchestrierung aller Aufrufe |
+
+---
+
+## 22. Python-Interna & `__pycache__` (Bytecode-Cache)
+
+Sobald ein Python-Skript andere eigene Module über `import` lädt (z. B. `import datenbank`, `import pdf_utils`), erstellt Python im selben Ordner automatisch das Verzeichnis **`__pycache__`**.
+
+### Wie funktioniert der Bytecode-Cache?
+1. **Übersetzung in Bytecode:** Beim ersten Aufruf wandelt Python den lesbaren Quellcode der importierten Module (`.py`) in compilierten **Bytecode** (`.pyc`) um.
+2. **Speicherung in `__pycache__`:** Dieser Bytecode wird als komprimierte Datei im Ordner `__pycache__/` abgelegt (z. B. `pdf_utils.cpython-312.pyc`).
+3. **Schnellerer Programmstart:** Bei jedem weiteren Start von `main.py` prüft Python, ob sich die `.py`-Datei geändert hat. Wenn nicht, lädt Python direkt den `.pyc`-Bytecode aus dem Cache. Das spart die Analysezeit und beschleunigt den Start erheblich.
+
+### Best Practice für Git & Repositories
+- Der Ordner `__pycache__` enthält temporäre Laufzeitdateien und gehört **nicht** in die Git-Versionsverwaltung.
+- **`.gitignore` Eintrag:**  
+  ```text
+  __pycache__/
+  *.pyc
+  ```
+
+> 💡 **Merksatz:**  
+> `__pycache__ = Automatischer Bytecode-Zwischenspeicher von Python für beschleunigte Modul-Imports.`
+
+---
+
+## 22. Python-Interna & `__pycache__` (Bytecode-Cache)
+
+Beim Ausführen von Python-Skripten, die andere Module via `import` einbinden (z. B. `import datenbank`), erstellt Python automatisch den Ordner `__pycache__/`.
+
+- **Funktionsweise:** Python übersetzt den Quellcode der importierten Skripte beim ersten Aufruf in compilierten **Bytecode** (`.pyc`-Dateien) und legt diesen im `__pycache__`-Ordner ab.
+- **Vorteil:** Bei allen weiteren Programmstarts liest Python direkt den vorgefertigten Bytecode ein, anstatt die Dateien erneut zu parsen. Das beschleunigt den Start des Programms spürbar.
+- **Versionsverwaltung (Git):** Da `__pycache__` maschinenspezifische Caches enthält, wird dieser Ordner nicht in Git hochgeladen, sondern in der `.gitignore`-Datei ausgeschlossen:
+
+```text
+# .gitignore
+__pycache__/
+*.pyc
+```
+
+---
+
+## 23. Oracle-Import (`RECHNUNGS_KOPF`), Stammdaten-IDs & `shutil`-Archivierung
+
+### Freitext in Stammdaten-IDs auflösen (`SELECT ID FROM ... WHERE NAME = :1`)
+Relationale Datenbanken speichern Schlüssel-IDs (`KREDITOR_ID`, `TARIF_ID`) anstelle von Freitext-Bezeichnungen.
+
+```python
+def get_vendor_id(vendor_name, pwd):
+    verbindung = oracledb.connect(user=config.DB_USER, password=pwd, dsn=config.DSN)
+    cursor = verbindung.cursor()
+    cursor.execute("SELECT ID FROM KREDITOREN WHERE NAME = :1", (vendor_name,))
+    daten = cursor.fetchone()
+    cursor.close()
+    verbindung.close()
+    return daten[0] if daten else None
+```
+
+> 💡 **Merksätze:**  
+> - `daten[0] if daten else None` schützt vor einem `IndexError`, falls keine Treffer in der DB existieren.  
+> - Bind-Variablen (`:1`, `:2`) schützen vor SQL-Injection.
+
+### Rechnungs-Kopfdaten speichern & `oracledb.DatabaseError` abfangen
+Werte aus Dictionaries (`details.get()`) mit `.replace(",", ".")` in `float` umwandeln und im SQL `TO_DATE()` nutzen:
+
+```python
+def speichere_rechnung(kreditor_id, tarif_id, details, pwd):
+    try:
+        verbindung = oracledb.connect(user=config.DB_USER, password=pwd, dsn=config.DSN)
+        cursor = verbindung.cursor()
+
+        betrag_netto = float(details.get("Rechnungsbetrag", "0").replace(",", "."))
+        ust_satz = float(details.get("USt-Satz", "0").replace(",", "."))
+
+        sql = """
+            INSERT INTO RECHNUNGS_KOPF (
+                KREDITOR_ID, KUNDEN_NUMMER, RG_DATUM, RUFNUMMER, 
+                TARIF_ID, RG_NUMMER, UST_SATZ, BETRAG_BRUTTO
+            )
+            VALUES (:1, :2, TO_DATE(:3, 'DD.MM.YYYY'), :4, :5, :6, :7, :8)
+        """
+        cursor.execute(sql, (
+            kreditor_id, details.get("Kunden-Nr.", ""), details.get("Rechnungsdatum", ""),
+            details.get("Rufnummer", ""), tarif_id, details.get("Rechnungsnummer", ""),
+            ust_satz, betrag_netto
+        ))
+        verbindung.commit()
+        cursor.close()
+        verbindung.close()
+        print("✅ Rechnung erfolgreich in Oracle gespeichert!")
+
+    except oracledb.DatabaseError as e:
+        error, = e.args
+        print(f"❌ Datenbankfehler: {error.message}")
+```
+
+### PDF-Datei ins Archiv verschieben (`shutil.move`)
+Importierte Dateien zur Vermeidung von Mehrfach-Verarbeitungen ins Archiv verschieben:
+
+```python
+import shutil
+
+shutil.move(PATH + FILE, ARCHIVE + FILE)
+```
+
+> 💡 **Merksatz:**  
+> `shutil.move(quelle, ziel)` verschiebt Dateien sauber im Dateisystem.
+
 ```
