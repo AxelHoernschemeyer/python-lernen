@@ -11,3 +11,4 @@ import_fehler.log
 
 # 4. Zugangsdaten & Konfigurationen (falls vorhanden)
 .env
+config.py

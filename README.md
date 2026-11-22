@@ -74,6 +74,7 @@ python3 main.py
 ## 🤝 Lernmethode & Protokoll
 
 Dieses Repository wird nach einem festen **1-zu-1-Lernprinzip** gepflegt:
+
 - **Ein Thema nach dem anderen:** Fokus auf schrittweises Verstehen ohne Überforderung.
 - **Direkte Dokumentation:** Abgeschlossene Lektionen werden unmittelbar ins Lernjournal und Nachschlagewerk überführt.
 - **Praxisorientiert:** Jede Lektion schließt mit einer konkreten Übung ab.
