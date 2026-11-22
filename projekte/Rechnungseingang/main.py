@@ -44,6 +44,12 @@ for pdf_file in INBOX.glob("*.pdf"):
     kreditor_id = db.get_vendor_id(aussteller, PWD)
     tarif_id = db.get_tarif_id(tarif, PWD)
 
+    # 4.1. Prüfen ob die Rechnung schon importiert wurde.
+    if db.rechnung_existiert(details.get("Rechnungsnummer"),aussteller,PWD):
+        print(f"Rechnung.-Nr. {details.get('Rechnungsnummer')} existiert bereits - wird übersprungen.")
+        shutil.move(pdf_file, ARCHIVE / filename)
+        continue
+
     # 5. Ausgelesene Daten in die Datenbank speichern (NUR EINMAL)
     db.speichere_rechnung(kreditor_id, tarif_id, filename, details, PWD)
 

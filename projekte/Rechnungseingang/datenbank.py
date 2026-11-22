@@ -62,6 +62,22 @@ def get_tarif_id(tarif_name, pwd):
     verbindung.close()
     return tarif_id
 
+def rechnung_existiert(rg_nummer, kreditor_id, pwd):
+    """Prüft ob die Rechnung mit Rechnungsnummer und Kreditor-ID schon existiert."""
+    sql = "SELECT COUNT(*) FROM RECHNUNGS_KOPF WHERE RG_NUMMER = :1 AND KREDITOR_ID = :2"
+
+    con = oracledb.connect(user=config.DB_USER, password=pwd, dsn=config.DSN)
+    cursor = con.cursor()
+    cursor.execute(sql, (rg_nummer,kreditor_id))
+
+    # fetchone() [0] holt die reine Trefferanzahl (0 oder +1)
+    anzahl = cursor.fetchone() [0]
+
+    cursor.close
+    con.close
+
+    return anzahl > 0
+
 def speichere_rechnung(kreditor_id, tarif_id, file_name, details, pwd):
     """ Rechnung in der Datenbank speichern."""
     db_password = pwd

@@ -47,39 +47,28 @@ def erkenne_rechnungsdetails(text_inhalt_pdf,aussteller):
                     details["Empfänger"] = zeile.replace("Guten Tag ", "").rstrip(",").strip()
         case "Vodafone GmbH":
             for index, zeile in enumerate(text_inhalt_pdf):
-                if "Kundennummer" in zeile:
-                    details["Kunden-Nr."] = zeile.split("Kundennummer ")[1]
-                elif "Datum" in zeile:
-                    datum = zeile.split()
-                    if len(datum) >= 3 :
-                        tag = datum[1].replace('.','')
-                        if len(tag) == 1 :
-                            tag = ("0" + tag)
-                        details["Rechnungsdatum"] = \
-                            helpers.monat_jahr_zu_datum(datum[2]+ " " + \
-                                                        datum[3],tag)
-                elif "Rechnungsnummer" == zeile:
-                    details["Rechnungsnummer"]  = zeile.split("Rechnungsnummer ")[1]
-                elif "'"'MwSt. ('"'" in zeile:
-                    details["Steuer"]  = zeile.split("MwSt. ( ")[1]
-                elif "Rechnungsbetrag (brutto, inkl. MwSt.)" in zeile:
-                    # Teilt die Zeile in einzelne Werte und erstellt eine Liste mit , getrennt.
-                    # Aus der Liste wird dann der vorletzte Wert genommen.
-                    # -1 wäre der letzt Wert der Liste
-                    betrag = zeile.split()[-2]
-                    details["Rechnungsbetrag"] = round(float(betrag.replace(',', '.')), 2)
-            # elif "Rechnungsbetrag (netto, ohne)" in zeile:
-            #     nbetrag = zeile.split()[-2]
-            #     details["NettoRGbetrag"] = round(float(nbetrag.replace(',', '.')), 2)
+                # 1. Zeitraum & Rechnungsdatum aus "Ihre Rechnung für November 2026"
+                if "Ihre Rechnung für " in zeile:
+                    monat_jahr = zeile.split("Ihre Rechnung für ")[1].strip()
+                    von_datum, bis_datum = helpers.monat_jahr_zu_zeitraum(monat_jahr)
 
-            # elif "Ihre Rechnung für" in zeile:
-            #     # 1. Text nach "Ihre Rechnung für" nehmen ("November 2026 ...")
-            #     monat_jahr = zeile.split("Ihre Rechnung für ")[1].strip()
-            #     # Wandelt es um in 01.11.2026
-            #     details["Zeitraum_Von"] = helpers.monat_jahr_zu_zeitraum(monat_jahr)[0].strip()
-            #     details["Zeitraum_Bis"] = helpers.monat_jahr_zu_zeitraum(monat_jahr)[1].strip()
-                elif "Herr" in zeile:
-                    details["Empfänger"] = text_inhalt_pdf[index + 1].strip()
+                    details["Rechnungsdatum"] = von_datum  # Erster des Monats
+                    details["VonDatum"] = von_datum
+                    details["BisDatum"] = bis_datum
+
+                # 2. Kundennummer
+                elif "Kunden-Nummer:" in zeile or "Kundennummer:" in zeile:
+                    details["Kunden-Nr."] = zeile.split(":")[-1].strip()
+
+                # 3. Rechnungsnummer
+                elif "Rechnungsnummer:" in zeile:
+                    details["Rechnungsnummer"] = zeile.split(":")[-1].strip()
+
+                # 4. Gesamtbetrag (z. B. "Zu zahlender Gesamtbetrag             56,97 €")
+                elif "Zu zahlender Gesamtbetrag" in zeile:
+                    teile = zeile.split()
+                    # teile[-2] greift zielsicher auf '56,97' zu (vor dem '€')
+                    details["Rechnungsbetrag"] = teile[-2]
     return details
 
 # details["Empfänger"] = text_inhalt_pdf[9].strip()  # Erste Zeile = Empfänger
