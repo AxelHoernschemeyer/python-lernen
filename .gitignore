@@ -1,0 +1,13 @@
+# 1. Python-Bytecode & Cache (wird automatisch generiert)
+__pycache__/
+*.pyc
+
+# 2. Log-Dateien (z. B. aus unserem Import-Skript)
+*.log
+import_fehler.log
+
+# 3. macOS-Systemdateien
+.DS_Store
+
+# 4. Zugangsdaten & Konfigurationen (falls vorhanden)
+.env
